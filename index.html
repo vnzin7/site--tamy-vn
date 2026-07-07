@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planejamentos tamy e Vnz</title>
+    <title>Planejamento tamy e vnz</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -11,33 +11,13 @@
     
     <style>
         :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
+            --primary: #8b5cf6;
+            --primary-dark: #7c3aed;
+            --primary-light: #a78bfa;
             --success: #10b981;
             --warning: #f59e0b;
             --danger: #ef4444;
-            --info: #3b82f6;
-            --dark: #0f172a;
-            --gray-700: #475569;
-            --gray-600: #64748b;
-            --gray-500: #94a3b8;
-            --gray-400: #cbd5e1;
-            --gray-300: #e2e8f0;
-            --gray-200: #f1f5f9;
-            --gray-100: #f8fafc;
-            --white: #ffffff;
-            --pink: #ec4899;
-            --blue: #3b82f6;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
-            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
-            --radius-md: 12px;
-            --radius-lg: 16px;
-            --radius-xl: 20px;
-            --transition: all 0.3s ease;
-        }
-
-        [data-tema="escuro"] {
+            --info: #6366f1;
             --dark: #f8fafc;
             --gray-700: #cbd5e1;
             --gray-600: #94a3b8;
@@ -46,24 +26,147 @@
             --gray-300: #334155;
             --gray-200: #1e293b;
             --gray-100: #0f172a;
-            --white: #1e293b;
+            --white: #12121a;
+            --pink: #ec4899;
+            --blue: #8b5cf6;
+            --shadow-sm: 0 1px 3px rgba(139, 92, 246, 0.2);
+            --shadow-md: 0 4px 6px rgba(139, 92, 246, 0.15);
+            --shadow-lg: 0 10px 25px rgba(139, 92, 246, 0.2);
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --transition: all 0.3s ease;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--gray-100);
-            color: var(--dark);
+            background: #0a0a0f;
+            color: #f8fafc;
             line-height: 1.6;
             min-height: 100vh;
         }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        /* ============ INTRO COM VÍDEO ============ */
+        .intro-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: fadeOut 0.8s ease 5s forwards;
+        }
 
+        .intro-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .intro-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 15, 0.6);
+            z-index: 2;
+        }
+
+        .intro-content {
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 3;
+        }
+
+        .intro-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        .intro-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .intro-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .intro-loading {
+            margin: 30px auto 0;
+            width: 200px;
+            height: 4px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .intro-loading-bar {
+            height: 100%;
+            background: #a78bfa;
+            border-radius: 2px;
+            animation: loading 5s ease forwards;
+        }
+
+        .btn-pular {
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: rgba(139, 92, 246, 0.3);
+            border: 1px solid rgba(168, 122, 250, 0.5);
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            z-index: 3;
+            position: relative;
+        }
+
+        .btn-pular:hover {
+            background: rgba(139, 92, 246, 0.5);
+        }
+
+        @keyframes loading {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; visibility: visible; }
+            to { opacity: 0; visibility: hidden; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* ============ HEADER ============ */
         .header {
-            background: var(--white);
-            border-bottom: 1px solid var(--gray-300);
+            background: #0f0f1a;
+            border-bottom: 1px solid #1e1e2e;
             padding: 12px 20px;
             display: flex;
             align-items: center;
@@ -71,7 +174,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: var(--shadow-sm);
+            box-shadow: 0 1px 3px rgba(139, 92, 246, 0.2);
             flex-wrap: wrap;
             gap: 12px;
         }
@@ -79,7 +182,7 @@
         .logo {
             font-size: 1.3rem;
             font-weight: 700;
-            color: var(--primary);
+            color: #a78bfa;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -91,56 +194,58 @@
         .nav a {
             padding: 8px 14px;
             border-radius: 20px;
-            color: var(--gray-600);
+            color: #94a3b8;
             text-decoration: none;
             font-weight: 500;
             font-size: 0.85rem;
             cursor: pointer;
             transition: var(--transition);
         }
-        .nav a:hover { background: var(--gray-200); }
-        .nav a.ativo { background: var(--primary); color: white; }
+        .nav a:hover { background: #1e1e2e; color: #a78bfa; }
+        .nav a.ativo { background: #7c3aed; color: white; }
 
-        .menu-btn { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--dark); }
+        .menu-btn { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #f8fafc; }
 
         .nav-mobile { display: none; width: 100%; flex-direction: column; gap: 4px; padding-top: 12px; }
         .nav-mobile.ativo { display: flex; }
         .nav-mobile a {
-            padding: 12px; border-radius: var(--radius-md); color: var(--gray-600);
+            padding: 12px; border-radius: var(--radius-md); color: #94a3b8;
             text-decoration: none; font-weight: 500; cursor: pointer;
         }
-        .nav-mobile a:hover { background: var(--gray-200); }
-        .nav-mobile a.ativo { background: var(--primary); color: white; }
+        .nav-mobile a:hover { background: #1e1e2e; }
+        .nav-mobile a.ativo { background: #7c3aed; color: white; }
 
-        .sync-status { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--gray-500); }
+        .sync-status { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: #94a3b8; }
         .sync-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success); }
         .sync-dot.offline { background: var(--danger); }
 
         .header-actions { display: flex; align-items: center; gap: 12px; }
 
         .btn-icon {
-            width: 36px; height: 36px; border: 1px solid var(--gray-300); border-radius: 50%;
-            background: var(--white); cursor: pointer; display: flex; align-items: center;
-            justify-content: center; color: var(--gray-600); transition: var(--transition);
+            width: 36px; height: 36px; border: 1px solid #1e1e2e; border-radius: 50%;
+            background: transparent; cursor: pointer; display: flex; align-items: center;
+            justify-content: center; color: #94a3b8; transition: var(--transition);
         }
-        .btn-icon:hover { border-color: var(--primary); color: var(--primary); }
+        .btn-icon:hover { border-color: #7c3aed; color: #a78bfa; }
 
+        /* ============ MAIN ============ */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .main-content { padding: 24px 0; }
         .secao { display: none; }
         .secao.ativa { display: block; }
 
         .welcome-banner {
-            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            background: linear-gradient(135deg, #7c3aed, #5b21b6);
             color: white; padding: 30px; border-radius: var(--radius-xl); margin-bottom: 24px;
         }
         .welcome-banner h2 { font-size: 1.8rem; margin-bottom: 8px; }
         .welcome-banner p { opacity: 0.9; }
 
         .card {
-            background: var(--white); border-radius: var(--radius-lg); padding: 24px;
-            border: 1px solid var(--gray-300); margin-bottom: 20px;
+            background: #12121a; border-radius: var(--radius-lg); padding: 24px;
+            border: 1px solid #1e1e2e; margin-bottom: 20px;
         }
-        .card-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 20px; }
+        .card-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 20px; color: #f8fafc; }
 
         .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -148,27 +253,27 @@
         .grid-auto { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
 
         .stat-card {
-            background: var(--white); border-radius: var(--radius-lg); padding: 20px;
-            border: 1px solid var(--gray-300); display: flex; align-items: center; gap: 12px;
+            background: #12121a; border-radius: var(--radius-lg); padding: 20px;
+            border: 1px solid #1e1e2e; display: flex; align-items: center; gap: 12px;
         }
         .stat-icon {
             width: 44px; height: 44px; border-radius: var(--radius-md);
             display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
         }
-        .bg-primary { background: rgba(99,102,241,0.1); color: var(--primary); }
-        .bg-success { background: rgba(16,185,129,0.1); color: var(--success); }
-        .bg-warning { background: rgba(245,158,11,0.1); color: var(--warning); }
-        .bg-info { background: rgba(59,130,246,0.1); color: var(--info); }
-        .bg-pink { background: rgba(236,72,153,0.1); color: var(--pink); }
-        .bg-blue { background: rgba(59,130,246,0.1); color: var(--blue); }
-        .bg-danger { background: rgba(239,68,68,0.1); color: var(--danger); }
+        .bg-primary { background: rgba(139,92,246,0.15); color: #a78bfa; }
+        .bg-success { background: rgba(16,185,129,0.15); color: var(--success); }
+        .bg-warning { background: rgba(245,158,11,0.15); color: var(--warning); }
+        .bg-info { background: rgba(99,102,241,0.15); color: #a78bfa; }
+        .bg-pink { background: rgba(236,72,153,0.15); color: var(--pink); }
+        .bg-blue { background: rgba(139,92,246,0.15); color: #a78bfa; }
+        .bg-danger { background: rgba(239,68,68,0.15); color: var(--danger); }
 
-        .stat-info small { display: block; font-size: 0.75rem; color: var(--gray-500); text-transform: uppercase; }
-        .stat-info strong { font-size: 1.3rem; font-weight: 700; }
+        .stat-info small { display: block; font-size: 0.75rem; color: #64748b; text-transform: uppercase; }
+        .stat-info strong { font-size: 1.3rem; font-weight: 700; color: #f8fafc; }
 
-        .progress { height: 10px; background: var(--gray-200); border-radius: 5px; overflow: hidden; margin: 8px 0; }
+        .progress { height: 10px; background: #1e1e2e; border-radius: 5px; overflow: hidden; margin: 8px 0; }
         .progress-bar { height: 100%; border-radius: 5px; transition: width 0.6s ease; }
-        .progress-primary { background: linear-gradient(90deg, #6366f1, #818cf8); }
+        .progress-primary { background: linear-gradient(90deg, #7c3aed, #a78bfa); }
         .progress-success { background: linear-gradient(90deg, #10b981, #34d399); }
         .progress-warning { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
         .progress-danger { background: linear-gradient(90deg, #ef4444, #f87171); }
@@ -176,13 +281,13 @@
         .progress-header { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 500; margin-bottom: 4px; }
 
         .form-group { margin-bottom: 12px; }
-        .form-label { display: block; font-size: 0.8rem; font-weight: 500; color: var(--gray-600); margin-bottom: 4px; }
+        .form-label { display: block; font-size: 0.8rem; font-weight: 500; color: #94a3b8; margin-bottom: 4px; }
 
         .form-input, .form-select {
-            width: 100%; padding: 10px 14px; border: 1px solid var(--gray-300); border-radius: 8px;
-            font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--dark); background: var(--white);
+            width: 100%; padding: 10px 14px; border: 1px solid #1e1e2e; border-radius: 8px;
+            font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #f8fafc; background: #0f0f1a;
         }
-        .form-input:focus, .form-select:focus { outline: none; border-color: var(--primary); }
+        .form-input:focus, .form-select:focus { outline: none; border-color: #7c3aed; }
 
         .form-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
 
@@ -191,57 +296,68 @@
             cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 6px;
             font-family: 'Inter', sans-serif; transition: var(--transition);
         }
-        .btn-primary { background: var(--primary); color: white; }
-        .btn-primary:hover { background: var(--primary-dark); }
+        .btn-primary { background: #7c3aed; color: white; }
+        .btn-primary:hover { background: #6d28d9; }
         .btn-success { background: var(--success); color: white; }
         .btn-danger { background: var(--danger); color: white; }
-        .btn-outline { background: transparent; border: 1px solid var(--gray-300); color: var(--gray-600); }
-        .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+        .btn-outline { background: transparent; border: 1px solid #1e1e2e; color: #94a3b8; }
+        .btn-outline:hover { border-color: #7c3aed; color: #a78bfa; }
         .btn-sm { padding: 6px 12px; font-size: 0.8rem; }
         .btn-full { width: 100%; justify-content: center; margin-top: 12px; }
 
         .badge {
             padding: 4px 10px; border-radius: 12px; font-size: 0.7rem; font-weight: 600;
         }
-        .badge-primary { background: rgba(99,102,241,0.1); color: var(--primary); }
-        .badge-success { background: rgba(16,185,129,0.1); color: var(--success); }
-        .badge-warning { background: rgba(245,158,11,0.1); color: var(--warning); }
-        .badge-danger { background: rgba(239,68,68,0.1); color: var(--danger); }
-        .badge-pink { background: rgba(236,72,153,0.1); color: var(--pink); }
-        .badge-blue { background: rgba(59,130,246,0.1); color: var(--blue); }
+        .badge-primary { background: rgba(139,92,246,0.15); color: #a78bfa; }
+        .badge-success { background: rgba(16,185,129,0.15); color: var(--success); }
+        .badge-warning { background: rgba(245,158,11,0.15); color: var(--warning); }
+        .badge-danger { background: rgba(239,68,68,0.15); color: var(--danger); }
 
         table { width: 100%; border-collapse: collapse; }
-        th { text-align: left; padding: 10px 14px; background: var(--gray-100); color: var(--gray-600); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; }
-        td { padding: 12px 14px; border-bottom: 1px solid var(--gray-200); font-size: 0.9rem; }
+        th { text-align: left; padding: 10px 14px; background: #0f0f1a; color: #94a3b8; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; }
+        td { padding: 12px 14px; border-bottom: 1px solid #1e1e2e; font-size: 0.9rem; }
         .table-container { overflow-x: auto; }
 
         .chart-container { position: relative; height: 280px; width: 100%; }
+        .chart-container-lg { position: relative; height: 400px; width: 100%; }
 
         .meta-card {
-            background: var(--white); border-radius: var(--radius-lg); padding: 20px;
-            border: 1px solid var(--gray-300);
+            background: #12121a; border-radius: var(--radius-lg); padding: 20px;
+            border: 1px solid #1e1e2e;
         }
         .meta-card-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px; }
         .meta-card-values { display: flex; justify-content: space-between; margin: 12px 0; }
-        .meta-card-saved { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
-        .meta-card-goal { font-size: 0.9rem; color: var(--gray-500); }
+        .meta-card-saved { font-size: 1.5rem; font-weight: 700; color: #a78bfa; }
+        .meta-card-goal { font-size: 0.9rem; color: #94a3b8; }
         .meta-card-actions { display: flex; gap: 8px; margin-top: 12px; }
 
         .presente-card {
-            background: var(--white); border-radius: var(--radius-lg); padding: 20px;
-            border: 1px solid var(--gray-300); transition: var(--transition);
+            background: #12121a; border-radius: var(--radius-lg); padding: 20px;
+            border: 1px solid #1e1e2e; transition: var(--transition);
         }
-        .presente-card:hover { box-shadow: var(--shadow-md); }
-        .presente-card.comprado { opacity: 0.6; background: var(--gray-100); }
+        .presente-card:hover { box-shadow: 0 4px 15px rgba(139,92,246,0.2); }
+        .presente-card.comprado { opacity: 0.5; background: #0f0f1a; }
+
+        .caixinha-card {
+            background: linear-gradient(135deg, #7c3aed, #5b21b6);
+            color: white; padding: 30px; border-radius: var(--radius-xl);
+            text-align: center; margin-bottom: 20px;
+        }
+        .caixinha-card h3 { font-size: 1.5rem; margin-bottom: 8px; }
+        .caixinha-card .valor-grande { font-size: 3rem; font-weight: 800; margin: 10px 0; }
+        .caixinha-card .valores-separados { display: flex; justify-content: center; gap: 40px; margin-top: 15px; }
+        .caixinha-card .valor-pessoa { text-align: center; }
+        .caixinha-card .valor-pessoa strong { display: block; font-size: 1.5rem; }
 
         .toast-container {
             position: fixed; bottom: 20px; right: 20px; z-index: 9999;
             display: flex; flex-direction: column; gap: 8px;
         }
         .toast {
-            background: var(--white); border: 1px solid var(--gray-300); padding: 14px 18px;
-            border-radius: 8px; box-shadow: var(--shadow-lg); display: flex; align-items: center;
-            gap: 8px; min-width: 250px; animation: slideUp 0.3s ease; font-size: 0.9rem;
+            background: #12121a; border: 1px solid #1e1e2e; padding: 14px 18px;
+            border-radius: 8px; box-shadow: 0 10px 25px rgba(139,92,246,0.3);
+            display: flex; align-items: center; gap: 8px; min-width: 250px;
+            animation: slideUp 0.3s ease; font-size: 0.9rem; color: #f8fafc;
         }
         @keyframes slideUp {
             from { transform: translateY(100%); opacity: 0; }
@@ -249,15 +365,15 @@
         }
 
         .section-header { margin-bottom: 24px; }
-        .section-header h2 { font-size: 1.8rem; display: flex; align-items: center; gap: 10px; }
+        .section-header h2 { font-size: 1.8rem; display: flex; align-items: center; gap: 10px; color: #f8fafc; }
 
         .dica-card {
-            background: linear-gradient(135deg, rgba(99,102,241,0.05), rgba(16,185,129,0.05));
-            border: 1px solid var(--primary); border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(124,58,237,0.05));
+            border: 1px solid #7c3aed; border-radius: var(--radius-lg);
             padding: 20px; margin-bottom: 20px;
         }
-        .dica-card h4 { color: var(--primary); margin-bottom: 8px; }
-        .dica-card p { color: var(--gray-600); font-size: 0.9rem; }
+        .dica-card h4 { color: #a78bfa; margin-bottom: 8px; }
+        .dica-card p { color: #94a3b8; font-size: 0.9rem; }
 
         @media (max-width: 768px) {
             .nav { display: none; }
@@ -265,15 +381,38 @@
             .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
             .grid-auto { grid-template-columns: 1fr; }
             .welcome-banner h2 { font-size: 1.4rem; }
+            .caixinha-card .valor-grande { font-size: 2rem; }
+            .caixinha-card .valores-separados { flex-direction: column; gap: 15px; }
+            .intro-title { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
+    <!-- TELA DE INTRO COM VÍDEO -->
+    <div class="intro-screen" id="introScreen">
+        <video autoplay muted playsinline class="intro-video" id="introVideo">
+            <source src="intro.mp4" type="video/mp4">
+        </video>
+        
+        <div class="intro-overlay"></div>
+        
+        <div class="intro-content">
+            <div class="intro-icon"></div>
+            <div class="intro-title"></div>
+            <div class="intro-subtitle"></div>
+            <div class="intro-loading">
+                <div class="intro-loading-bar"></div>
+            </div>
+            <button class="btn-pular" onclick="pularIntro()">Pular Intro ⏭️</button>
+        </div>
+    </div>
+
+    <!-- APP -->
     <div class="toast-container" id="toastContainer"></div>
 
     <header class="header">
         <a class="logo" onclick="mostrarSecao('dashboard')">
-            <i class="fas fa-chart-pie"></i> Planejamentos tamy e vnz
+            <i class="fas fa-chart-pie"></i> Nosso Planejamento
         </a>
         
         <button class="menu-btn" id="btnMenu"><i class="fas fa-bars"></i></button>
@@ -310,8 +449,23 @@
             <!-- DASHBOARD -->
             <section class="secao ativa" id="secao-dashboard">
                 <div class="welcome-banner">
-                    <h2>Bem-vindos ao Nosso Planejamento 2k26❤</h2>
-                    <p>Acompanhe finanças, metas e organização😜</p>
+                    <h2>👋 Bem-vindos ao Nosso Planejamento</h2>
+                    <p>Acompanhe finanças, metas e momentos especiais do casal</p>
+                </div>
+                
+                <div class="caixinha-card">
+                    <h3>💎 Economia Total do Casal</h3>
+                    <div class="valor-grande" id="dashTotalGuardado">R$ 0,00</div>
+                    <div class="valores-separados">
+                        <div class="valor-pessoa">
+                            <span>👩 Tammy</span>
+                            <strong id="dashGuardadoTammy">R$ 0,00</strong>
+                        </div>
+                        <div class="valor-pessoa">
+                            <span>👨 VN</span>
+                            <strong id="dashGuardadoVN">R$ 0,00</strong>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="grid-4" style="margin-bottom: 24px;">
@@ -333,8 +487,7 @@
                     </div>
                 </div>
                 
-                <!-- DICA FINANCEIRA DO DIA -->
-                <div class="dica-card" id="dicaDiaria">
+                <div class="dica-card">
                     <h4>💡 Dica Financeira do Dia</h4>
                     <p id="textoDica">Carregando...</p>
                 </div>
@@ -355,12 +508,32 @@
             <section class="secao" id="secao-financas">
                 <div class="section-header"><h2><i class="fas fa-wallet"></i> Finanças Compartilhadas</h2></div>
                 
-                <!-- SALDOS -->
+                <div class="caixinha-card">
+                    <h3>💎 Economia Total</h3>
+                    <div class="valor-grande" id="totalGuardado">R$ 0,00</div>
+                    <div class="valores-separados">
+                        <div class="valor-pessoa">
+                            <span>👩 Tammy guardou</span>
+                            <strong id="guardadoTammy">R$ 0,00</strong>
+                            <button class="btn btn-sm" onclick="adicionarGuardado('tammy')" style="margin-top:8px;background:rgba(255,255,255,0.2);">
+                                <i class="fas fa-plus"></i> Guardar
+                            </button>
+                        </div>
+                        <div class="valor-pessoa">
+                            <span>👨 VN guardou</span>
+                            <strong id="guardadoVN">R$ 0,00</strong>
+                            <button class="btn btn-sm" onclick="adicionarGuardado('vn')" style="margin-top:8px;background:rgba(255,255,255,0.2);">
+                                <i class="fas fa-plus"></i> Guardar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="grid-3" style="margin-bottom: 24px;">
                     <div class="stat-card">
                         <div class="stat-icon bg-pink"><i class="fas fa-female"></i></div>
                         <div class="stat-info">
-                            <small>Saldo da Tammy</small>
+                            <small>Saldo Tammy</small>
                             <strong id="saldoTammy">R$ 0,00</strong>
                             <button class="btn btn-sm btn-outline" onclick="adicionarSaldo('tammy')" style="margin-top:8px;">
                                 <i class="fas fa-plus"></i> Adicionar
@@ -370,7 +543,7 @@
                     <div class="stat-card">
                         <div class="stat-icon bg-blue"><i class="fas fa-male"></i></div>
                         <div class="stat-info">
-                            <small>Saldo do VN</small>
+                            <small>Saldo VN</small>
                             <strong id="saldoVN">R$ 0,00</strong>
                             <button class="btn btn-sm btn-outline" onclick="adicionarSaldo('vn')" style="margin-top:8px;">
                                 <i class="fas fa-plus"></i> Adicionar
@@ -386,46 +559,17 @@
                     </div>
                 </div>
                 
-                <!-- ADICIONAR GASTO -->
                 <div class="grid-2">
                     <div class="card">
                         <h3 class="card-title">Registrar Gasto</h3>
                         <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label">Quem Gastou</label>
-                                <select id="quemGastou" class="form-select">
-                                    <option value="tammy">👩 Tammy</option>
-                                    <option value="vn">👨 VN</option>
-                                    <option value="dividido">🤝 Dividido</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Descrição</label>
-                                <input type="text" id="nomeGasto" class="form-input" placeholder="Ex: Supermercado">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Valor (R$)</label>
-                                <input type="number" id="valorGasto" class="form-input" placeholder="0,00" step="0.01">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Categoria</label>
-                                <select id="categoriaGasto" class="form-select">
-                                    <option value="Alimentação">🍕 Alimentação</option>
-                                    <option value="Transporte">🚗 Transporte</option>
-                                    <option value="Moradia">🏠 Moradia</option>
-                                    <option value="Lazer">🎉 Lazer</option>
-                                    <option value="Saúde">💊 Saúde</option>
-                                    <option value="Outros">📦 Outros</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Data</label>
-                                <input type="date" id="dataGasto" class="form-input">
-                            </div>
+                            <div class="form-group"><label class="form-label">Quem Gastou</label><select id="quemGastou" class="form-select"><option value="tammy">👩 Tammy</option><option value="vn">👨 VN</option><option value="dividido">🤝 Dividido</option></select></div>
+                            <div class="form-group"><label class="form-label">Descrição</label><input type="text" id="nomeGasto" class="form-input" placeholder="Ex: Supermercado"></div>
+                            <div class="form-group"><label class="form-label">Valor (R$)</label><input type="number" id="valorGasto" class="form-input" placeholder="0,00" step="0.01"></div>
+                            <div class="form-group"><label class="form-label">Categoria</label><select id="categoriaGasto" class="form-select"><option value="Alimentação">🍕 Alimentação</option><option value="Transporte">🚗 Transporte</option><option value="Moradia">🏠 Moradia</option><option value="Lazer">🎉 Lazer</option><option value="Saúde">💊 Saúde</option><option value="Outros">📦 Outros</option></select></div>
+                            <div class="form-group"><label class="form-label">Data</label><input type="date" id="dataGasto" class="form-input"></div>
                         </div>
-                        <button class="btn btn-primary btn-full" onclick="adicionarGasto()">
-                            <i class="fas fa-plus"></i> Registrar Gasto
-                        </button>
+                        <button class="btn btn-primary btn-full" onclick="adicionarGasto()"><i class="fas fa-plus"></i> Registrar Gasto</button>
                     </div>
                     
                     <div class="card">
@@ -434,40 +578,23 @@
                     </div>
                 </div>
                 
-                <!-- RESUMO DE GASTOS -->
                 <div class="grid-3" style="margin-bottom: 24px;">
-                    <div class="card" style="text-align: center;">
-                        <small style="color: var(--gray-500);">Gastos da Tammy</small>
-                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--pink);" id="gastosTammy">R$ 0,00</div>
-                    </div>
-                    <div class="card" style="text-align: center;">
-                        <small style="color: var(--gray-500);">Gastos do VN</small>
-                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--blue);" id="gastosVN">R$ 0,00</div>
-                    </div>
-                    <div class="card" style="text-align: center;">
-                        <small style="color: var(--gray-500);">Gastos Totais</small>
-                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--danger);" id="gastosTotal">R$ 0,00</div>
-                    </div>
+                    <div class="card" style="text-align:center;"><small style="color:#64748b;">Gastos da Tammy</small><div style="font-size:1.5rem;font-weight:700;color:var(--pink);" id="gastosTammy">R$ 0,00</div></div>
+                    <div class="card" style="text-align:center;"><small style="color:#64748b;">Gastos do VN</small><div style="font-size:1.5rem;font-weight:700;color:var(--blue);" id="gastosVN">R$ 0,00</div></div>
+                    <div class="card" style="text-align:center;"><small style="color:#64748b;">Gastos Totais</small><div style="font-size:1.5rem;font-weight:700;color:var(--danger);" id="gastosTotal">R$ 0,00</div></div>
                 </div>
                 
-                <!-- HISTÓRICO -->
+                <div class="card">
+                    <h3 class="card-title">📈 Evolução de Gastos por Mês</h3>
+                    <div class="chart-container-lg"><canvas id="graficoLinhas"></canvas></div>
+                </div>
+                
                 <div class="card">
                     <h3 class="card-title">Histórico de Gastos</h3>
                     <div class="table-container">
                         <table>
-                            <thead>
-                                <tr>
-                                    <th>Quem</th>
-                                    <th>Descrição</th>
-                                    <th>Categoria</th>
-                                    <th>Valor</th>
-                                    <th>Data</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody id="tabelaGastos">
-                                <tr><td colspan="6" style="text-align:center;padding:30px;">Nenhum gasto registrado</td></tr>
-                            </tbody>
+                            <thead><tr><th>Quem</th><th>Descrição</th><th>Categoria</th><th>Valor</th><th>Data</th><th></th></tr></thead>
+                            <tbody id="tabelaGastos"><tr><td colspan="6" style="text-align:center;padding:30px;">Nenhum gasto registrado</td></tr></tbody>
                         </table>
                     </div>
                 </div>
@@ -479,27 +606,13 @@
                 
                 <div class="card">
                     <h3 class="card-title">Nova Meta</h3>
-                    <div class="form-group">
-                        <label class="form-label">Nome da Meta</label>
-                        <input type="text" id="nomeMeta" class="form-input" placeholder="Ex: Viagem para Europa">
-                    </div>
+                    <div class="form-group"><label class="form-label">Nome da Meta</label><input type="text" id="nomeMeta" class="form-input" placeholder="Ex: Viagem para Europa"></div>
                     <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">Valor Total (R$)</label>
-                            <input type="number" id="valorMeta" class="form-input" placeholder="10.000,00" step="0.01">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Já Economizado (R$)</label>
-                            <input type="number" id="valorAtualMeta" class="form-input" placeholder="2.500,00" step="0.01">
-                        </div>
+                        <div class="form-group"><label class="form-label">Valor Total (R$)</label><input type="number" id="valorMeta" class="form-input" placeholder="10.000,00" step="0.01"></div>
+                        <div class="form-group"><label class="form-label">Já Economizado (R$)</label><input type="number" id="valorAtualMeta" class="form-input" placeholder="2.500,00" step="0.01"></div>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">Data Limite (opcional)</label>
-                        <input type="date" id="dataMeta" class="form-input">
-                    </div>
-                    <button class="btn btn-success btn-full" onclick="adicionarMeta()">
-                        <i class="fas fa-plus"></i> Criar Meta
-                    </button>
+                    <div class="form-group"><label class="form-label">Data Limite (opcional)</label><input type="date" id="dataMeta" class="form-input"></div>
+                    <button class="btn btn-success btn-full" onclick="adicionarMeta()"><i class="fas fa-plus"></i> Criar Meta</button>
                 </div>
                 
                 <div class="grid-auto" id="gridMetas"></div>
@@ -512,37 +625,13 @@
                 <div class="card">
                     <h3 class="card-title">Adicionar Presente</h3>
                     <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">Nome do Presente</label>
-                            <input type="text" id="nomePresente" class="form-input" placeholder="Ex: Air Fryer">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Valor Estimado (R$)</label>
-                            <input type="number" id="valorPresente" class="form-input" step="0.01" placeholder="0,00">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Prioridade</label>
-                            <select id="prioridadePresente" class="form-select">
-                                <option value="alta">🔥 Alta</option>
-                                <option value="media">⭐ Média</option>
-                                <option value="baixa">💤 Baixa</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Link para Compra (opcional)</label>
-                            <input type="url" id="linkPresente" class="form-input" placeholder="https://...">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Quem Adicionou</label>
-                            <select id="quemAdicionou" class="form-select">
-                                <option value="tammy">👩 Tammy</option>
-                                <option value="vn">👨 VN</option>
-                            </select>
-                        </div>
+                        <div class="form-group"><label class="form-label">Nome</label><input type="text" id="nomePresente" class="form-input" placeholder="Ex: Air Fryer"></div>
+                        <div class="form-group"><label class="form-label">Valor (R$)</label><input type="number" id="valorPresente" class="form-input" step="0.01" placeholder="0,00"></div>
+                        <div class="form-group"><label class="form-label">Prioridade</label><select id="prioridadePresente" class="form-select"><option value="alta">🔥 Alta</option><option value="media">⭐ Média</option><option value="baixa">💤 Baixa</option></select></div>
+                        <div class="form-group"><label class="form-label">Link</label><input type="url" id="linkPresente" class="form-input" placeholder="https://..."></div>
+                        <div class="form-group"><label class="form-label">Quem Adicionou</label><select id="quemAdicionou" class="form-select"><option value="tammy">👩 Tammy</option><option value="vn">👨 VN</option></select></div>
                     </div>
-                    <button class="btn btn-primary btn-full" onclick="adicionarPresente()">
-                        <i class="fas fa-plus"></i> Adicionar Presente
-                    </button>
+                    <button class="btn btn-primary btn-full" onclick="adicionarPresente()"><i class="fas fa-plus"></i> Adicionar Presente</button>
                 </div>
                 
                 <div class="grid-auto" id="gridPresentes"></div>
@@ -553,20 +642,12 @@
                 <div class="section-header"><h2><i class="fas fa-calendar"></i> Datas Especiais</h2></div>
                 
                 <div class="card">
-                    <h3 class="card-title">Adicionar Data Especial</h3>
+                    <h3 class="card-title">Adicionar Data</h3>
                     <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">Nome do Evento</label>
-                            <input type="text" id="nomeEvento" class="form-input" placeholder="Ex: Aniversário de Namoro">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Data</label>
-                            <input type="date" id="dataEvento" class="form-input">
-                        </div>
+                        <div class="form-group"><label class="form-label">Evento</label><input type="text" id="nomeEvento" class="form-input" placeholder="Ex: Aniversário de Namoro"></div>
+                        <div class="form-group"><label class="form-label">Data</label><input type="date" id="dataEvento" class="form-input"></div>
                     </div>
-                    <button class="btn btn-primary btn-full" onclick="adicionarDataEspecial()">
-                        <i class="fas fa-plus"></i> Adicionar Data
-                    </button>
+                    <button class="btn btn-primary btn-full" onclick="adicionarDataEspecial()"><i class="fas fa-plus"></i> Adicionar Data</button>
                 </div>
                 
                 <div class="grid-auto" id="gridEventos"></div>
@@ -583,18 +664,27 @@
         };
 
         let AppState = {
-            gastos: [],
-            metas: [],
-            presentes: [],
-            eventos: [],
-            saldoTammy: 0,
-            saldoVN: 0,
-            tema: 'claro'
+            gastos: [], metas: [], presentes: [], eventos: [],
+            saldoTammy: 0, saldoVN: 0, guardadoTammy: 0, guardadoVN: 0, tema: 'claro'
         };
 
-        let graficoPizza = null;
+        let graficoPizza = null, graficoLinhas = null;
 
-        // ============ DICAS FINANCEIRAS ============
+        // ============ CONTROLE DA INTRO ============
+        function pularIntro() {
+            const intro = document.getElementById('introScreen');
+            if (intro) {
+                const video = document.getElementById('introVideo');
+                if (video) video.pause();
+                intro.style.animation = 'none';
+                intro.style.opacity = '0';
+                intro.style.visibility = 'hidden';
+                intro.style.transition = 'all 0.5s ease';
+                setTimeout(() => intro.remove(), 500);
+            }
+        }
+
+        // ============ DICAS ============
         const dicasFinanceiras = [
             "💰 Regra 50-30-20: 50% para gastos essenciais, 30% para lazer e 20% para poupança.",
             "📊 Anote todos os gastos, mesmo os pequenos. Eles fazem diferença no fim do mês!",
@@ -603,28 +693,23 @@
             "💳 Cuidado com parcelamentos! Some todas as parcelas antes de comprar.",
             "🏦 Tenha uma reserva de emergência de pelo menos 3 meses de gastos.",
             "📱 Use apps de cashback e compare preços antes de comprar.",
-            "🚗 Para viagens, planeje com antecedência e pesquise bastante.",
-            "💡 Pequenas economias diárias viram grandes valores no fim do ano.",
             "❤️ Conversem sobre dinheiro regularmente. Comunicação é essencial!"
         ];
 
         function gerarDicaDiaria() {
-            const dica = dicasFinanceiras[Math.floor(Math.random() * dicasFinanceiras.length)];
-            document.getElementById('textoDica').textContent = dica;
+            document.getElementById('textoDica').textContent = dicasFinanceiras[Math.floor(Math.random() * dicasFinanceiras.length)];
         }
 
         // ============ INICIALIZAÇÃO ============
         document.addEventListener('DOMContentLoaded', async () => {
             await carregarDados();
             mostrarSecao('dashboard');
-            aplicarTema();
             configurarData();
             gerarDicaDiaria();
             
             document.getElementById('btnMenu').addEventListener('click', () => {
                 document.getElementById('navMobile').classList.toggle('ativo');
             });
-
             setInterval(sincronizarNuvem, 10000);
         });
 
@@ -632,114 +717,68 @@
         async function carregarDados() {
             updateSyncStatus(false);
             try {
-                const response = await fetch(`${JSONBIN_CONFIG.URL}/${JSONBIN_CONFIG.BIN_ID}/latest`, {
-                    headers: { 'X-Master-Key': JSONBIN_CONFIG.API_KEY }
-                });
-                if (response.ok) {
-                    const data = await response.json();
-                    AppState = { ...AppState, ...data.record };
+                const r = await fetch(`${JSONBIN_CONFIG.URL}/${JSONBIN_CONFIG.BIN_ID}/latest`, { headers: { 'X-Master-Key': JSONBIN_CONFIG.API_KEY } });
+                if (r.ok) {
+                    const d = await r.json();
+                    AppState = { ...AppState, ...d.record };
                     if (!AppState.saldoTammy) AppState.saldoTammy = 0;
                     if (!AppState.saldoVN) AppState.saldoVN = 0;
+                    if (!AppState.guardadoTammy) AppState.guardadoTammy = 0;
+                    if (!AppState.guardadoVN) AppState.guardadoVN = 0;
                     updateSyncStatus(true);
-                    console.log('✅ Dados carregados da nuvem');
                     return;
                 }
             } catch (e) {}
-            
             const local = localStorage.getItem('appState');
             if (local) {
-                try { 
-                    AppState = { ...AppState, ...JSON.parse(local) };
-                    if (!AppState.saldoTammy) AppState.saldoTammy = 0;
-                    if (!AppState.saldoVN) AppState.saldoVN = 0;
-                } catch(e) {}
+                try { AppState = { ...AppState, ...JSON.parse(local) }; } catch (e) {}
             }
             updateSyncStatus(false);
         }
 
         async function salvarDados() {
-            const dadosParaSalvar = {
-                gastos: AppState.gastos,
-                metas: AppState.metas,
-                presentes: AppState.presentes,
-                eventos: AppState.eventos,
-                saldoTammy: AppState.saldoTammy,
-                saldoVN: AppState.saldoVN,
-                tema: AppState.tema
-            };
-            
-            try {
-                await fetch(`${JSONBIN_CONFIG.URL}/${JSONBIN_CONFIG.BIN_ID}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-Master-Key': JSONBIN_CONFIG.API_KEY
-                    },
-                    body: JSON.stringify(dadosParaSalvar)
-                });
-                updateSyncStatus(true);
-            } catch (e) {
-                updateSyncStatus(false);
-            }
-            
+            const d = { gastos: AppState.gastos, metas: AppState.metas, presentes: AppState.presentes, eventos: AppState.eventos, saldoTammy: AppState.saldoTammy, saldoVN: AppState.saldoVN, guardadoTammy: AppState.guardadoTammy, guardadoVN: AppState.guardadoVN, tema: AppState.tema };
+            try { await fetch(`${JSONBIN_CONFIG.URL}/${JSONBIN_CONFIG.BIN_ID}`, { method: 'PUT', headers: { 'Content-Type': 'application/json', 'X-Master-Key': JSONBIN_CONFIG.API_KEY }, body: JSON.stringify(d) }); updateSyncStatus(true); } catch (e) { updateSyncStatus(false); }
             localStorage.setItem('appState', JSON.stringify(AppState));
         }
 
         async function sincronizarNuvem() {
             try {
-                const response = await fetch(`${JSONBIN_CONFIG.URL}/${JSONBIN_CONFIG.BIN_ID}/latest`, {
-                    headers: { 'X-Master-Key': JSONBIN_CONFIG.API_KEY }
-                });
-                if (response.ok) {
-                    const data = await response.json();
-                    const nuvem = JSON.stringify(data.record);
-                    const local = JSON.stringify({
-                        gastos: AppState.gastos, metas: AppState.metas,
-                        presentes: AppState.presentes, eventos: AppState.eventos,
-                        saldoTammy: AppState.saldoTammy, saldoVN: AppState.saldoVN,
-                        tema: AppState.tema
-                    });
-                    if (nuvem !== local) {
-                        AppState = { ...AppState, ...data.record };
-                        if (!AppState.saldoTammy) AppState.saldoTammy = 0;
-                        if (!AppState.saldoVN) AppState.saldoVN = 0;
+                const r = await fetch(`${JSONBIN_CONFIG.URL}/${JSONBIN_CONFIG.BIN_ID}/latest`, { headers: { 'X-Master-Key': JSONBIN_CONFIG.API_KEY } });
+                if (r.ok) {
+                    const d = await r.json();
+                    const local = JSON.stringify({ gastos: AppState.gastos, metas: AppState.metas, presentes: AppState.presentes, eventos: AppState.eventos, saldoTammy: AppState.saldoTammy, saldoVN: AppState.saldoVN, guardadoTammy: AppState.guardadoTammy, guardadoVN: AppState.guardadoVN, tema: AppState.tema });
+                    if (JSON.stringify(d.record) !== local) {
+                        AppState = { ...AppState, ...d.record };
+                        if (!AppState.guardadoTammy) AppState.guardadoTammy = 0;
+                        if (!AppState.guardadoVN) AppState.guardadoVN = 0;
                         atualizarTela();
                     }
                     updateSyncStatus(true);
                 }
-            } catch (e) {
-                updateSyncStatus(false);
-            }
+            } catch (e) { updateSyncStatus(false); }
         }
 
         function updateSyncStatus(online) {
-            const dot = document.getElementById('syncDot');
-            const text = document.getElementById('syncText');
-            if (dot) dot.className = 'sync-dot' + (online ? '' : ' offline');
-            if (text) text.textContent = online ? 'Online' : 'Offline';
+            document.getElementById('syncDot').className = 'sync-dot' + (online ? '' : ' offline');
+            document.getElementById('syncText').textContent = online ? 'Online' : 'Offline';
         }
 
         function atualizarTela() {
-            const pagina = document.querySelector('.secao.ativa')?.id.replace('secao-', '');
-            if (pagina === 'dashboard') atualizarDashboard();
-            else if (pagina === 'financas') atualizarFinancas();
-            else if (pagina === 'metas') atualizarMetas();
-            else if (pagina === 'presentes') atualizarPresentes();
-            else if (pagina === 'datas') atualizarEventos();
+            const p = document.querySelector('.secao.ativa')?.id.replace('secao-', '');
+            if (p === 'dashboard') atualizarDashboard();
+            else if (p === 'financas') atualizarFinancas();
+            else if (p === 'metas') atualizarMetas();
+            else if (p === 'presentes') atualizarPresentes();
+            else if (p === 'datas') atualizarEventos();
         }
 
         // ============ NAVEGAÇÃO ============
         function mostrarSecao(nome) {
             document.querySelectorAll('.secao').forEach(s => s.classList.remove('ativa'));
             document.getElementById(`secao-${nome}`).classList.add('ativa');
-            
-            document.querySelectorAll('.nav a, .nav-mobile a').forEach(a => {
-                a.classList.remove('ativo');
-                if (a.dataset.secao === nome) a.classList.add('ativo');
-            });
-            
+            document.querySelectorAll('.nav a, .nav-mobile a').forEach(a => { a.classList.remove('ativo'); if (a.dataset.secao === nome) a.classList.add('ativo'); });
             document.getElementById('navMobile').classList.remove('ativo');
-            
             if (nome === 'dashboard') atualizarDashboard();
             if (nome === 'financas') { configurarData(); atualizarFinancas(); }
             if (nome === 'metas') atualizarMetas();
@@ -747,15 +786,7 @@
             if (nome === 'datas') { configurarData(); atualizarEventos(); }
         }
 
-        function alternarTema() {
-            AppState.tema = AppState.tema === 'claro' ? 'escuro' : 'claro';
-            aplicarTema();
-            salvarDados();
-        }
-
-        function aplicarTema() {
-            document.documentElement.setAttribute('data-tema', AppState.tema);
-        }
+        function alternarTema() { AppState.tema = AppState.tema === 'claro' ? 'escuro' : 'claro'; salvarDados(); }
 
         function configurarData() {
             const hoje = new Date().toISOString().split('T')[0];
@@ -764,66 +795,71 @@
         }
 
         function mostrarToast(msg) {
-            const toast = document.createElement('div');
-            toast.className = 'toast';
-            toast.innerHTML = `<i class="fas fa-check-circle" style="color: var(--success);"></i> ${msg}`;
-            document.getElementById('toastContainer').appendChild(toast);
-            setTimeout(() => { toast.remove(); }, 3000);
+            const t = document.createElement('div'); t.className = 'toast';
+            t.innerHTML = `<i class="fas fa-check-circle" style="color: var(--success);"></i> ${msg}`;
+            document.getElementById('toastContainer').appendChild(t);
+            setTimeout(() => t.remove(), 3000);
         }
 
         function formatarMoeda(v) { return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(v); }
         function formatarData(d) { return new Date(d).toLocaleDateString('pt-BR'); }
 
+        // ============ GUARDADO ============
+        function adicionarGuardado(pessoa) {
+            const valor = prompt(`Quanto ${pessoa === 'tammy' ? 'a Tammy' : 'o VN'} quer guardar?`, '0');
+            if (valor !== null) {
+                const v = parseFloat(valor);
+                if (isNaN(v) || v <= 0) { mostrarToast('Valor inválido!'); return; }
+                if (pessoa === 'tammy') {
+                    if (v > (AppState.saldoTammy || 0)) { mostrarToast('Saldo insuficiente!'); return; }
+                    AppState.saldoTammy -= v; AppState.guardadoTammy = (AppState.guardadoTammy || 0) + v;
+                } else {
+                    if (v > (AppState.saldoVN || 0)) { mostrarToast('Saldo insuficiente!'); return; }
+                    AppState.saldoVN -= v; AppState.guardadoVN = (AppState.guardadoVN || 0) + v;
+                }
+                salvarDados(); atualizarFinancas();
+                mostrarToast(`💰 Guardado ${formatarMoeda(v)}!`);
+            }
+        }
+
+        function atualizarGuardado() {
+            document.getElementById('guardadoTammy').textContent = formatarMoeda(AppState.guardadoTammy || 0);
+            document.getElementById('guardadoVN').textContent = formatarMoeda(AppState.guardadoVN || 0);
+            document.getElementById('totalGuardado').textContent = formatarMoeda((AppState.guardadoTammy || 0) + (AppState.guardadoVN || 0));
+        }
+
         // ============ DASHBOARD ============
         function atualizarDashboard() {
             const hoje = new Date();
-            const mes = hoje.getMonth();
-            const ano = hoje.getFullYear();
-            
             document.getElementById('dashSaldoTammy').textContent = formatarMoeda(AppState.saldoTammy || 0);
             document.getElementById('dashSaldoVN').textContent = formatarMoeda(AppState.saldoVN || 0);
+            document.getElementById('dashGuardadoTammy').textContent = formatarMoeda(AppState.guardadoTammy || 0);
+            document.getElementById('dashGuardadoVN').textContent = formatarMoeda(AppState.guardadoVN || 0);
+            document.getElementById('dashTotalGuardado').textContent = formatarMoeda((AppState.guardadoTammy || 0) + (AppState.guardadoVN || 0));
             document.getElementById('dashMetas').textContent = AppState.metas.filter(m => !m.concluida).length;
-            
             const eventos = AppState.eventos.filter(e => new Date(e.data) > hoje).sort((a,b) => new Date(a.data) - new Date(b.data));
-            document.getElementById('dashEvento').textContent = eventos.length > 0 ? 
-                `${Math.ceil((new Date(eventos[0].data) - hoje) / (1000*60*60*24))} dias` : '-';
+            document.getElementById('dashEvento').textContent = eventos.length > 0 ? `${Math.ceil((new Date(eventos[0].data) - hoje) / (1000*60*60*24))} dias` : '-';
             
             const container = document.getElementById('dashUltimosGastos');
             const ultimos = [...AppState.gastos].reverse().slice(0, 5);
-            container.innerHTML = ultimos.length === 0 ? '<p style="color:var(--gray-500);text-align:center;padding:20px;">Nenhum gasto</p>' :
-                ultimos.map(g => {
-                    const quem = g.quemGastou === 'tammy' ? '👩 Tammy' : g.quemGastou === 'vn' ? '👨 VN' : '🤝 Dividido';
-                    return `<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--gray-200);"><div><strong>${g.nome}</strong><br><small style="color:var(--gray-500);">${quem} • ${g.categoria}</small></div><span style="color:var(--danger);font-weight:600;">-${formatarMoeda(g.valor)}</span></div>`;
-                }).join('');
+            container.innerHTML = ultimos.length === 0 ? '<p style="color:#64748b;text-align:center;padding:20px;">Nenhum gasto</p>' :
+                ultimos.map(g => `<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #1e1e2e;"><div><strong>${g.nome}</strong><br><small style="color:#64748b;">${g.quemGastou==='tammy'?'👩 Tammy':g.quemGastou==='vn'?'👨 VN':'🤝 Dividido'} • ${g.categoria}</small></div><span style="color:var(--danger);font-weight:600;">-${formatarMoeda(g.valor)}</span></div>`).join('');
             
             const metasContainer = document.getElementById('dashMetasProgresso');
             const ativas = AppState.metas.filter(m => !m.concluida).slice(0, 3);
-            metasContainer.innerHTML = ativas.length === 0 ? '<p style="color:var(--gray-500);text-align:center;padding:20px;">Nenhuma meta</p>' :
-                ativas.map(m => {
-                    const pct = Math.min(100, (m.valorAtual/m.valorTotal)*100);
-                    return `<div style="margin-bottom:16px;"><div class="progress-header"><span>${m.nome}</span><span>${pct.toFixed(0)}%</span></div><div class="progress"><div class="progress-bar progress-primary" style="width:${pct}%"></div></div><div style="display:flex;justify-content:space-between;font-size:0.8rem;color:var(--gray-500);"><span>${formatarMoeda(m.valorAtual)}</span><span>${formatarMoeda(m.valorTotal)}</span></div></div>`;
-                }).join('');
+            metasContainer.innerHTML = ativas.length === 0 ? '<p style="color:#64748b;text-align:center;padding:20px;">Nenhuma meta</p>' :
+                ativas.map(m => { const pct = Math.min(100, (m.valorAtual/m.valorTotal)*100); return `<div style="margin-bottom:16px;"><div class="progress-header"><span>${m.nome}</span><span>${pct.toFixed(0)}%</span></div><div class="progress"><div class="progress-bar progress-primary" style="width:${pct}%"></div></div></div>`; }).join('');
         }
 
         // ============ SALDO ============
         function adicionarSaldo(pessoa) {
-            const valor = prompt(`Quanto deseja adicionar ao saldo ${pessoa === 'tammy' ? 'da Tammy' : 'do VN'}?`, '0');
+            const valor = prompt(`Quanto adicionar ao saldo ${pessoa === 'tammy' ? 'da Tammy' : 'do VN'}?`, '0');
             if (valor !== null) {
-                const valorNum = parseFloat(valor);
-                if (isNaN(valorNum) || valorNum <= 0) {
-                    mostrarToast('Valor inválido!');
-                    return;
-                }
-                
-                if (pessoa === 'tammy') {
-                    AppState.saldoTammy = (AppState.saldoTammy || 0) + valorNum;
-                } else {
-                    AppState.saldoVN = (AppState.saldoVN || 0) + valorNum;
-                }
-                
-                salvarDados();
-                atualizarSaldos();
-                mostrarToast(`Saldo adicionado para ${pessoa === 'tammy' ? 'Tammy' : 'VN'}! 💰`);
+                const v = parseFloat(valor);
+                if (isNaN(v) || v <= 0) { mostrarToast('Valor inválido!'); return; }
+                if (pessoa === 'tammy') AppState.saldoTammy = (AppState.saldoTammy || 0) + v;
+                else AppState.saldoVN = (AppState.saldoVN || 0) + v;
+                salvarDados(); atualizarSaldos(); mostrarToast('Saldo adicionado! 💰');
             }
         }
 
@@ -837,354 +873,141 @@
         function adicionarGasto() {
             const nome = document.getElementById('nomeGasto').value;
             const valor = parseFloat(document.getElementById('valorGasto').value);
-            const quemGastou = document.getElementById('quemGastou').value;
+            const quem = document.getElementById('quemGastou').value;
+            if (!nome || !valor || valor <= 0) { mostrarToast('Preencha todos os campos!'); return; }
+            if (quem === 'tammy' && valor > (AppState.saldoTammy || 0)) { mostrarToast('Saldo insuficiente da Tammy!'); return; }
+            if (quem === 'vn' && valor > (AppState.saldoVN || 0)) { mostrarToast('Saldo insuficiente do VN!'); return; }
+            if (quem === 'dividido' && (valor/2 > (AppState.saldoTammy||0) || valor/2 > (AppState.saldoVN||0))) { mostrarToast('Saldo insuficiente!'); return; }
             
-            if (!nome || !valor || valor <= 0) {
-                mostrarToast('Preencha todos os campos!');
-                return;
-            }
+            if (quem === 'tammy') AppState.saldoTammy -= valor;
+            else if (quem === 'vn') AppState.saldoVN -= valor;
+            else { AppState.saldoTammy -= valor/2; AppState.saldoVN -= valor/2; }
             
-            if (quemGastou === 'tammy' && valor > (AppState.saldoTammy || 0)) {
-                mostrarToast('Saldo insuficiente da Tammy!');
-                return;
-            }
-            if (quemGastou === 'vn' && valor > (AppState.saldoVN || 0)) {
-                mostrarToast('Saldo insuficiente do VN!');
-                return;
-            }
-            if (quemGastou === 'dividido') {
-                const metade = valor / 2;
-                if (metade > (AppState.saldoTammy || 0) || metade > (AppState.saldoVN || 0)) {
-                    mostrarToast('Saldo insuficiente para dividir!');
-                    return;
-                }
-            }
-            
-            if (quemGastou === 'tammy') AppState.saldoTammy -= valor;
-            else if (quemGastou === 'vn') AppState.saldoVN -= valor;
-            else if (quemGastou === 'dividido') {
-                AppState.saldoTammy -= valor / 2;
-                AppState.saldoVN -= valor / 2;
-            }
-            
-            AppState.gastos.push({
-                id: Date.now(),
-                nome, valor, quemGastou,
-                categoria: document.getElementById('categoriaGasto').value,
-                data: document.getElementById('dataGasto').value
-            });
-            
-            salvarDados();
-            atualizarFinancas();
-            document.getElementById('nomeGasto').value = '';
-            document.getElementById('valorGasto').value = '';
-            configurarData();
-            mostrarToast('Gasto registrado! ✅');
+            AppState.gastos.push({ id: Date.now(), nome, valor, quemGastou: quem, categoria: document.getElementById('categoriaGasto').value, data: document.getElementById('dataGasto').value });
+            salvarDados(); atualizarFinancas();
+            document.getElementById('nomeGasto').value = ''; document.getElementById('valorGasto').value = '';
+            configurarData(); mostrarToast('Gasto registrado! ✅');
         }
 
         function excluirGasto(id) {
-            if (confirm('Excluir este gasto? O valor será devolvido ao saldo.')) {
-                const gasto = AppState.gastos.find(g => g.id === id);
-                if (gasto) {
-                    if (gasto.quemGastou === 'tammy') AppState.saldoTammy += gasto.valor;
-                    else if (gasto.quemGastou === 'vn') AppState.saldoVN += gasto.valor;
-                    else if (gasto.quemGastou === 'dividido') {
-                        AppState.saldoTammy += gasto.valor / 2;
-                        AppState.saldoVN += gasto.valor / 2;
-                    }
+            if (confirm('Excluir? O valor será devolvido.')) {
+                const g = AppState.gastos.find(x => x.id === id);
+                if (g) {
+                    if (g.quemGastou === 'tammy') AppState.saldoTammy += g.valor;
+                    else if (g.quemGastou === 'vn') AppState.saldoVN += g.valor;
+                    else { AppState.saldoTammy += g.valor/2; AppState.saldoVN += g.valor/2; }
                 }
-                
-                AppState.gastos = AppState.gastos.filter(g => g.id !== id);
-                salvarDados();
-                atualizarFinancas();
-                mostrarToast('Gasto excluído! Valor devolvido.');
+                AppState.gastos = AppState.gastos.filter(x => x.id !== id);
+                salvarDados(); atualizarFinancas(); mostrarToast('Gasto excluído!');
             }
         }
 
         function atualizarFinancas() {
             const tbody = document.getElementById('tabelaGastos');
             const gastos = [...AppState.gastos].reverse();
+            tbody.innerHTML = gastos.length === 0 ? '<tr><td colspan="6" style="text-align:center;padding:30px;">Nenhum gasto</td></tr>' :
+                gastos.map(g => `<tr><td style="color:${g.quemGastou==='tammy'?'var(--pink)':g.quemGastou==='vn'?'var(--blue)':'var(--warning)'};font-weight:600;">${g.quemGastou==='tammy'?'👩 Tammy':g.quemGastou==='vn'?'👨 VN':'🤝 Dividido'}</td><td><strong>${g.nome}</strong></td><td>${g.categoria}</td><td style="color:var(--danger);font-weight:600;">-${formatarMoeda(g.valor)}</td><td>${formatarData(g.data)}</td><td><button class="btn btn-outline btn-sm" onclick="excluirGasto(${g.id})"><i class="fas fa-trash"></i></button></td></tr>`).join('');
             
-            if (gastos.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:30px;">Nenhum gasto registrado</td></tr>';
-            } else {
-                tbody.innerHTML = gastos.map(g => {
-                    const quem = g.quemGastou === 'tammy' ? '👩 Tammy' : g.quemGastou === 'vn' ? '👨 VN' : '🤝 Dividido';
-                    const cor = g.quemGastou === 'tammy' ? 'var(--pink)' : g.quemGastou === 'vn' ? 'var(--blue)' : 'var(--warning)';
-                    return `<tr>
-                        <td><span style="color:${cor};font-weight:600;">${quem}</span></td>
-                        <td><strong>${g.nome}</strong></td>
-                        <td>${g.categoria}</td>
-                        <td style="color:var(--danger);font-weight:600;">-${formatarMoeda(g.valor)}</td>
-                        <td>${formatarData(g.data)}</td>
-                        <td><button class="btn btn-outline btn-sm" onclick="excluirGasto(${g.id})"><i class="fas fa-trash"></i></button></td>
-                    </tr>`;
-                }).join('');
-            }
+            const gt = AppState.gastos.filter(g => g.quemGastou==='tammy').reduce((a,g)=>a+g.valor,0) + AppState.gastos.filter(g => g.quemGastou==='dividido').reduce((a,g)=>a+g.valor/2,0);
+            const gv = AppState.gastos.filter(g => g.quemGastou==='vn').reduce((a,g)=>a+g.valor,0) + AppState.gastos.filter(g => g.quemGastou==='dividido').reduce((a,g)=>a+g.valor/2,0);
+            document.getElementById('gastosTammy').textContent = formatarMoeda(gt);
+            document.getElementById('gastosVN').textContent = formatarMoeda(gv);
+            document.getElementById('gastosTotal').textContent = formatarMoeda(gt+gv);
             
-            const gastosTammy = AppState.gastos.filter(g => g.quemGastou === 'tammy').reduce((acc, g) => acc + g.valor, 0) + 
-                               AppState.gastos.filter(g => g.quemGastou === 'dividido').reduce((acc, g) => acc + g.valor/2, 0);
-            const gastosVN = AppState.gastos.filter(g => g.quemGastou === 'vn').reduce((acc, g) => acc + g.valor, 0) + 
-                            AppState.gastos.filter(g => g.quemGastou === 'dividido').reduce((acc, g) => acc + g.valor/2, 0);
-            
-            document.getElementById('gastosTammy').textContent = formatarMoeda(gastosTammy);
-            document.getElementById('gastosVN').textContent = formatarMoeda(gastosVN);
-            document.getElementById('gastosTotal').textContent = formatarMoeda(gastosTammy + gastosVN);
-            
-            atualizarGraficoPizza();
-            atualizarSaldos();
+            atualizarGraficoPizza(); atualizarGraficoLinhas(); atualizarSaldos(); atualizarGuardado();
         }
 
         function atualizarGraficoPizza() {
-            const canvas = document.getElementById('graficoPizza');
-            if (!canvas) return;
+            const canvas = document.getElementById('graficoPizza'); if (!canvas) return;
             const ctx = canvas.getContext('2d');
-            
-            const categorias = {};
-            AppState.gastos.forEach(g => { categorias[g.categoria] = (categorias[g.categoria] || 0) + g.valor; });
-            
-            const labels = Object.keys(categorias);
-            const data = Object.values(categorias);
-            const total = data.reduce((a,b) => a+b, 0);
-            
+            const cats = {}; AppState.gastos.forEach(g => { cats[g.categoria] = (cats[g.categoria]||0) + g.valor; });
+            const labels = Object.keys(cats), data = Object.values(cats), total = data.reduce((a,b)=>a+b,0);
             if (graficoPizza) graficoPizza.destroy();
             if (data.length === 0) return;
-            
-            graficoPizza = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels,
-                    datasets: [{ data, backgroundColor: ['#6366f1','#10b981','#f59e0b','#ef4444','#3b82f6','#ec4899'], borderWidth: 2, borderColor: '#fff' }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { position: 'bottom', labels: { padding: 15, usePointStyle: true } },
-                        tooltip: { callbacks: { label: ctx => `${ctx.label}: ${formatarMoeda(ctx.parsed)} (${((ctx.parsed/total)*100).toFixed(1)}%)` } }
-                    }
-                }
-            });
+            graficoPizza = new Chart(ctx, { type: 'doughnut', data: { labels, datasets: [{ data, backgroundColor: ['#8b5cf6','#10b981','#f59e0b','#ef4444','#6366f1','#ec4899'], borderColor: '#12121a', borderWidth: 2 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#94a3b8' } }, tooltip: { callbacks: { label: c => `${c.label}: ${formatarMoeda(c.parsed)} (${((c.parsed/total)*100).toFixed(1)}%)` } } } } });
+        }
+
+        function atualizarGraficoLinhas() {
+            const canvas = document.getElementById('graficoLinhas'); if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const porMes = {};
+            AppState.gastos.forEach(g => { const m = g.data.substring(0,7); if (!porMes[m]) porMes[m] = { tammy:0, vn:0 }; if (g.quemGastou==='tammy') porMes[m].tammy += g.valor; else if (g.quemGastou==='vn') porMes[m].vn += g.valor; else { porMes[m].tammy += g.valor/2; porMes[m].vn += g.valor/2; } });
+            const labels = Object.keys(porMes).sort();
+            if (graficoLinhas) graficoLinhas.destroy();
+            if (labels.length === 0) return;
+            graficoLinhas = new Chart(ctx, { type: 'line', data: { labels: labels.map(l => { const [a,m] = l.split('-'); return `${m}/${a}`; }), datasets: [{ label: '👩 Tammy', data: labels.map(l => porMes[l].tammy), borderColor: '#ec4899', backgroundColor: 'rgba(236,72,153,0.1)', tension: 0.4, fill: true }, { label: '👨 VN', data: labels.map(l => porMes[l].vn), borderColor: '#8b5cf6', backgroundColor: 'rgba(139,92,246,0.1)', tension: 0.4, fill: true }, { label: 'Total', data: labels.map(l => porMes[l].tammy+porMes[l].vn), borderColor: '#10b981', backgroundColor: 'rgba(16,185,129,0.1)', tension: 0.4, fill: true, borderWidth: 3 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#94a3b8' } } }, scales: { x: { ticks: { color: '#94a3b8' } }, y: { ticks: { color: '#94a3b8', callback: v => formatarMoeda(v) } } } } });
         }
 
         // ============ METAS ============
         function adicionarMeta() {
-            const nome = document.getElementById('nomeMeta').value;
-            const valorTotal = parseFloat(document.getElementById('valorMeta').value);
-            const valorAtual = parseFloat(document.getElementById('valorAtualMeta').value) || 0;
-            
-            if (!nome || !valorTotal) { mostrarToast('Preencha nome e valor total!'); return; }
-            
-            AppState.metas.push({
-                id: Date.now(),
-                nome, valorTotal, valorAtual,
-                dataLimite: document.getElementById('dataMeta').value,
-                concluida: valorAtual >= valorTotal
-            });
-            
-            salvarDados();
-            atualizarMetas();
-            document.getElementById('nomeMeta').value = '';
-            document.getElementById('valorMeta').value = '';
-            document.getElementById('valorAtualMeta').value = '';
+            const nome = document.getElementById('nomeMeta').value, valorTotal = parseFloat(document.getElementById('valorMeta').value);
+            if (!nome || !valorTotal) { mostrarToast('Preencha nome e valor!'); return; }
+            AppState.metas.push({ id: Date.now(), nome, valorTotal, valorAtual: parseFloat(document.getElementById('valorAtualMeta').value)||0, dataLimite: document.getElementById('dataMeta').value, concluida: false });
+            salvarDados(); atualizarMetas();
+            document.getElementById('nomeMeta').value = ''; document.getElementById('valorMeta').value = ''; document.getElementById('valorAtualMeta').value = '';
             mostrarToast('Meta criada! 🎯');
         }
 
         function atualizarValorMeta(id) {
-            const meta = AppState.metas.find(m => m.id === id);
-            if (!meta) return;
-            const valor = prompt(`Atualizar "${meta.nome}"\nAtual: ${formatarMoeda(meta.valorAtual)}\nMeta: ${formatarMoeda(meta.valorTotal)}`, meta.valorAtual);
-            if (valor !== null) {
-                meta.valorAtual = Math.min(parseFloat(valor) || 0, meta.valorTotal);
-                meta.concluida = meta.valorAtual >= meta.valorTotal;
-                salvarDados();
-                atualizarMetas();
-                mostrarToast('Meta atualizada! 💰');
-            }
+            const m = AppState.metas.find(x => x.id === id); if (!m) return;
+            const v = prompt(`Atualizar "${m.nome}"\nAtual: ${formatarMoeda(m.valorAtual)}\nMeta: ${formatarMoeda(m.valorTotal)}`, m.valorAtual);
+            if (v !== null) { m.valorAtual = Math.min(parseFloat(v)||0, m.valorTotal); m.concluida = m.valorAtual >= m.valorTotal; salvarDados(); atualizarMetas(); mostrarToast('Meta atualizada! 💰'); }
         }
 
-        function excluirMeta(id) {
-            if (confirm('Excluir esta meta?')) {
-                AppState.metas = AppState.metas.filter(m => m.id !== id);
-                salvarDados();
-                atualizarMetas();
-                mostrarToast('Meta excluída!');
-            }
-        }
+        function excluirMeta(id) { if (confirm('Excluir?')) { AppState.metas = AppState.metas.filter(m => m.id !== id); salvarDados(); atualizarMetas(); mostrarToast('Meta excluída!'); } }
 
         function atualizarMetas() {
-            const container = document.getElementById('gridMetas');
-            if (AppState.metas.length === 0) {
-                container.innerHTML = '<p style="text-align:center;grid-column:1/-1;padding:40px;color:var(--gray-500);">Nenhuma meta criada</p>';
-                return;
-            }
-            
-            container.innerHTML = AppState.metas.map(m => {
-                const pct = Math.min(100, (m.valorAtual/m.valorTotal)*100);
-                const falta = m.valorTotal - m.valorAtual;
-                return `
-                <div class="meta-card">
-                    <div class="meta-card-header">
-                        <div><strong>${m.nome}</strong>${m.dataLimite ? `<br><small style="color:var(--gray-500);">Até ${formatarData(m.dataLimite)}</small>` : ''}</div>
-                        <span class="badge ${m.concluida ? 'badge-success' : 'badge-primary'}">${m.concluida ? '✅ Concluída' : '⏳ Em andamento'}</span>
-                    </div>
-                    <div class="progress-header"><span>Progresso</span><span>${pct.toFixed(1)}%</span></div>
-                    <div class="progress"><div class="progress-bar ${pct >= 100 ? 'progress-success' : pct >= 50 ? 'progress-primary' : 'progress-warning'}" style="width:${pct}%"></div></div>
-                    <div class="meta-card-values">
-                        <div><small style="color:var(--gray-500);">Economizado</small><div class="meta-card-saved">${formatarMoeda(m.valorAtual)}</div></div>
-                        <div style="text-align:right;"><small style="color:var(--gray-500);">Meta</small><div class="meta-card-goal">${formatarMoeda(m.valorTotal)}</div></div>
-                    </div>
-                    ${!m.concluida ? `<div style="background:var(--gray-100);padding:10px;border-radius:8px;margin-bottom:12px;">Faltam: <strong style="color:var(--primary);">${formatarMoeda(falta)}</strong></div>` : '<div style="background:rgba(16,185,129,0.1);padding:10px;border-radius:8px;margin-bottom:12px;color:var(--success);">🎉 Meta concluída! Parabéns!</div>'}
-                    <div class="meta-card-actions">
-                        <button class="btn btn-primary btn-sm" onclick="atualizarValorMeta(${m.id})"><i class="fas fa-edit"></i> Atualizar</button>
-                        <button class="btn btn-outline btn-sm" onclick="excluirMeta(${m.id})"><i class="fas fa-trash"></i></button>
-                    </div>
-                </div>`;
-            }).join('');
+            const c = document.getElementById('gridMetas');
+            if (AppState.metas.length === 0) { c.innerHTML = '<p style="text-align:center;padding:40px;color:#64748b;">Nenhuma meta</p>'; return; }
+            c.innerHTML = AppState.metas.map(m => { const pct = Math.min(100, (m.valorAtual/m.valorTotal)*100); return `<div class="meta-card"><div class="meta-card-header"><div><strong>${m.nome}</strong>${m.dataLimite?`<br><small style="color:#64748b;">Até ${formatarData(m.dataLimite)}</small>`:''}</div><span class="badge ${m.concluida?'badge-success':'badge-primary'}">${m.concluida?'✅ Concluída':'⏳ Em andamento'}</span></div><div class="progress-header"><span>Progresso</span><span>${pct.toFixed(1)}%</span></div><div class="progress"><div class="progress-bar ${pct>=100?'progress-success':pct>=50?'progress-primary':'progress-warning'}" style="width:${pct}%"></div></div><div class="meta-card-values"><div><small style="color:#64748b;">Economizado</small><div class="meta-card-saved">${formatarMoeda(m.valorAtual)}</div></div><div style="text-align:right;"><small style="color:#64748b;">Meta</small><div class="meta-card-goal">${formatarMoeda(m.valorTotal)}</div></div></div>${!m.concluida?`<div style="background:#0f0f1a;padding:10px;border-radius:8px;margin-bottom:12px;">Faltam: <strong style="color:#a78bfa;">${formatarMoeda(m.valorTotal-m.valorAtual)}</strong></div>`:'<div style="background:rgba(16,185,129,0.1);padding:10px;border-radius:8px;margin-bottom:12px;color:var(--success);">🎉 Meta concluída!</div>'}<div class="meta-card-actions"><button class="btn btn-primary btn-sm" onclick="atualizarValorMeta(${m.id})"><i class="fas fa-edit"></i> Atualizar</button><button class="btn btn-outline btn-sm" onclick="excluirMeta(${m.id})"><i class="fas fa-trash"></i></button></div></div>`; }).join('');
         }
 
         // ============ PRESENTES ============
         function adicionarPresente() {
-            const nome = document.getElementById('nomePresente').value;
-            if (!nome) { mostrarToast('Informe o nome!'); return; }
-            
-            AppState.presentes.push({
-                id: Date.now(),
-                nome,
-                valor: parseFloat(document.getElementById('valorPresente').value) || 0,
-                prioridade: document.getElementById('prioridadePresente').value,
-                link: document.getElementById('linkPresente').value,
-                quemAdicionou: document.getElementById('quemAdicionou').value,
-                comprado: false,
-                dataAdicao: new Date().toISOString()
-            });
-            
-            salvarDados();
-            atualizarPresentes();
-            mostrarToast('Presente adicionado! 🎁');
+            const nome = document.getElementById('nomePresente').value; if (!nome) { mostrarToast('Informe o nome!'); return; }
+            AppState.presentes.push({ id: Date.now(), nome, valor: parseFloat(document.getElementById('valorPresente').value)||0, prioridade: document.getElementById('prioridadePresente').value, link: document.getElementById('linkPresente').value, quemAdicionou: document.getElementById('quemAdicionou').value, comprado: false });
+            salvarDados(); atualizarPresentes(); mostrarToast('Presente adicionado! 🎁');
         }
 
-        function marcarComprado(id) {
-            const presente = AppState.presentes.find(p => p.id === id);
-            if (presente) {
-                presente.comprado = !presente.comprado;
-                salvarDados();
-                atualizarPresentes();
-                mostrarToast(presente.comprado ? 'Marcado como comprado! ✅' : 'Desmarcado! 🔄');
-            }
-        }
-
-        function excluirPresente(id) {
-            if (confirm('Excluir este presente?')) {
-                AppState.presentes = AppState.presentes.filter(p => p.id !== id);
-                salvarDados();
-                atualizarPresentes();
-                mostrarToast('Presente excluído!');
-            }
-        }
+        function marcarComprado(id) { const p = AppState.presentes.find(x => x.id === id); if (p) { p.comprado = !p.comprado; salvarDados(); atualizarPresentes(); mostrarToast(p.comprado?'Comprado! ✅':'Desmarcado! 🔄'); } }
+        function excluirPresente(id) { if (confirm('Excluir?')) { AppState.presentes = AppState.presentes.filter(p => p.id !== id); salvarDados(); atualizarPresentes(); mostrarToast('Excluído!'); } }
 
         function atualizarPresentes() {
-            const container = document.getElementById('gridPresentes');
-            if (AppState.presentes.length === 0) {
-                container.innerHTML = '<p style="text-align:center;grid-column:1/-1;padding:40px;color:var(--gray-500);">Nenhum presente na lista</p>';
-                return;
-            }
-            
-            const naoComprados = AppState.presentes.filter(p => !p.comprado);
-            const comprados = AppState.presentes.filter(p => p.comprado);
-            
-            let html = '';
-            
-            if (naoComprados.length > 0) {
-                html += '<h4 style="grid-column:1/-1;margin-bottom:8px;">🎁 Para Comprar</h4>';
-                html += naoComprados.map(p => {
-                    const quem = p.quemAdicionou === 'tammy' ? '👩 Tammy' : '👨 VN';
-                    return `
-                    <div class="presente-card" style="border-left: 4px solid ${p.prioridade === 'alta' ? 'var(--danger)' : p.prioridade === 'media' ? 'var(--warning)' : 'var(--success)'};">
-                        <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:8px;">
-                            <strong>${p.nome}</strong>
-                            <span class="badge badge-${p.prioridade === 'alta' ? 'danger' : p.prioridade === 'media' ? 'warning' : 'success'}">${p.prioridade === 'alta' ? '🔥' : p.prioridade === 'media' ? '⭐' : '💤'}</span>
-                        </div>
-                        ${p.valor > 0 ? `<p style="color:var(--primary);font-weight:600;">${formatarMoeda(p.valor)}</p>` : ''}
-                        <p style="font-size:0.8rem;color:var(--gray-500);">Adicionado por ${quem}</p>
-                        ${p.link ? `<a href="${p.link}" target="_blank" style="color:var(--primary);display:block;margin:8px 0;">🔗 Link para compra</a>` : ''}
-                        <div style="display:flex;gap:8px;margin-top:12px;">
-                            <button class="btn btn-success btn-sm" onclick="marcarComprado(${p.id})"><i class="fas fa-check"></i> Comprei</button>
-                            <button class="btn btn-outline btn-sm" onclick="excluirPresente(${p.id})"><i class="fas fa-trash"></i></button>
-                        </div>
-                    </div>`;
-                }).join('');
-            }
-            
-            if (comprados.length > 0) {
-                html += '<h4 style="grid-column:1/-1;margin:20px 0 8px 0;opacity:0.7;">✅ Já Comprados</h4>';
-                html += comprados.map(p => `
-                    <div class="presente-card comprado">
-                        <strong style="text-decoration:line-through;">${p.nome}</strong>
-                        <p style="font-size:0.8rem;color:var(--gray-500);">Comprado ✅</p>
-                        <button class="btn btn-outline btn-sm" onclick="marcarComprado(${p.id})" style="margin-top:8px;"><i class="fas fa-undo"></i> Desmarcar</button>
-                    </div>
-                `).join('');
-            }
-            
-            container.innerHTML = html;
+            const c = document.getElementById('gridPresentes');
+            if (AppState.presentes.length === 0) { c.innerHTML = '<p style="text-align:center;padding:40px;color:#64748b;">Nenhum presente</p>'; return; }
+            const nao = AppState.presentes.filter(p => !p.comprado), sim = AppState.presentes.filter(p => p.comprado);
+            let h = '';
+            if (nao.length > 0) { h += '<h4 style="grid-column:1/-1;color:#f8fafc;">🎁 Para Comprar</h4>'; h += nao.map(p => `<div class="presente-card" style="border-left:4px solid ${p.prioridade==='alta'?'var(--danger)':p.prioridade==='media'?'var(--warning)':'var(--success)'};"><div style="display:flex;justify-content:space-between;"><strong>${p.nome}</strong><span class="badge badge-${p.prioridade==='alta'?'danger':p.prioridade==='media'?'warning':'success'}">${p.prioridade==='alta'?'🔥':p.prioridade==='media'?'⭐':'💤'}</span></div>${p.valor>0?`<p style="color:#a78bfa;font-weight:600;">${formatarMoeda(p.valor)}</p>`:''}<p style="font-size:0.8rem;color:#64748b;">Por: ${p.quemAdicionou==='tammy'?'👩 Tammy':'👨 VN'}</p>${p.link?`<a href="${p.link}" target="_blank" style="color:#a78bfa;">🔗 Comprar</a>`:''}<div style="display:flex;gap:8px;margin-top:12px;"><button class="btn btn-success btn-sm" onclick="marcarComprado(${p.id})"><i class="fas fa-check"></i> Comprei</button><button class="btn btn-outline btn-sm" onclick="excluirPresente(${p.id})"><i class="fas fa-trash"></i></button></div></div>`).join(''); }
+            if (sim.length > 0) { h += '<h4 style="grid-column:1/-1;margin-top:20px;opacity:0.7;color:#f8fafc;">✅ Comprados</h4>'; h += sim.map(p => `<div class="presente-card comprado"><strong style="text-decoration:line-through;">${p.nome}</strong><p style="color:#64748b;">Comprado ✅</p><button class="btn btn-outline btn-sm" onclick="marcarComprado(${p.id})"><i class="fas fa-undo"></i></button></div>`).join(''); }
+            c.innerHTML = h;
         }
 
         // ============ DATAS ============
         function adicionarDataEspecial() {
-            const nome = document.getElementById('nomeEvento').value;
-            const data = document.getElementById('dataEvento').value;
-            if (!nome || !data) { mostrarToast('Preencha todos os campos!'); return; }
-            
-            AppState.eventos.push({ id: Date.now(), nome, data });
-            salvarDados();
-            atualizarEventos();
-            mostrarToast('Data adicionada! 💝');
+            const nome = document.getElementById('nomeEvento').value, data = document.getElementById('dataEvento').value;
+            if (!nome || !data) { mostrarToast('Preencha!'); return; }
+            AppState.eventos.push({ id: Date.now(), nome, data }); salvarDados(); atualizarEventos(); mostrarToast('Data adicionada! 💝');
         }
 
-        function excluirEvento(id) {
-            if (confirm('Excluir este evento?')) {
-                AppState.eventos = AppState.eventos.filter(e => e.id !== id);
-                salvarDados();
-                atualizarEventos();
-                mostrarToast('Evento excluído!');
-            }
-        }
+        function excluirEvento(id) { if (confirm('Excluir?')) { AppState.eventos = AppState.eventos.filter(e => e.id !== id); salvarDados(); atualizarEventos(); mostrarToast('Excluído!'); } }
 
         function atualizarEventos() {
-            const container = document.getElementById('gridEventos');
-            if (AppState.eventos.length === 0) {
-                container.innerHTML = '<p style="text-align:center;grid-column:1/-1;padding:40px;color:var(--gray-500);">Nenhuma data especial</p>';
-                return;
-            }
-            
+            const c = document.getElementById('gridEventos');
+            if (AppState.eventos.length === 0) { c.innerHTML = '<p style="text-align:center;padding:40px;color:#64748b;">Nenhuma data</p>'; return; }
             const hoje = new Date();
-            container.innerHTML = AppState.eventos
-                .sort((a, b) => new Date(a.data) - new Date(b.data))
-                .map(e => {
-                    const dias = Math.ceil((new Date(e.data) - hoje) / (1000*60*60*24));
-                    let cor, status;
-                    if (dias > 30) { cor = 'var(--info)'; status = `${dias} dias`; }
-                    else if (dias > 7) { cor = 'var(--warning)'; status = `${dias} dias`; }
-                    else if (dias > 0) { cor = 'var(--danger)'; status = `${dias} dias!`; }
-                    else if (dias === 0) { cor = 'var(--success)'; status = '🎉 É HOJE!'; }
-                    else { cor = 'var(--gray-500)'; status = '✅ Já passou'; }
-                    
-                    return `
-                    <div class="card" style="border-left:4px solid ${cor};">
-                        <div style="display:flex;justify-content:space-between;align-items:start;">
-                            <strong>${e.nome}</strong>
-                            <button class="btn btn-outline btn-sm" onclick="excluirEvento(${e.id})"><i class="fas fa-trash"></i></button>
-                        </div>
-                        <p style="color:var(--gray-500);">📅 ${formatarData(e.data)}</p>
-                        <p style="color:${cor};font-weight:600;font-size:1.1rem;">${status}</p>
-                    </div>`;
-                }).join('');
+            c.innerHTML = AppState.eventos.sort((a,b) => new Date(a.data) - new Date(b.data)).map(e => {
+                const dias = Math.ceil((new Date(e.data) - hoje) / (1000*60*60*24));
+                let cor = dias>30?'var(--info)':dias>7?'var(--warning)':dias>0?'var(--danger)':'var(--success)';
+                let st = dias>0?`${dias} dias`:dias===0?'🎉 HOJE!':'✅ Passou';
+                return `<div class="card" style="border-left:4px solid ${cor};"><div style="display:flex;justify-content:space-between;"><strong>${e.nome}</strong><button class="btn btn-outline btn-sm" onclick="excluirEvento(${e.id})"><i class="fas fa-trash"></i></button></div><p style="color:#64748b;">📅 ${formatarData(e.data)}</p><p style="color:${cor};font-weight:600;">${st}</p></div>`;
+            }).join('');
         }
 
         // Exportar funções globais
+        window.pularIntro = pularIntro;
         window.mostrarSecao = mostrarSecao;
         window.alternarTema = alternarTema;
+        window.adicionarGuardado = adicionarGuardado;
         window.adicionarSaldo = adicionarSaldo;
         window.adicionarGasto = adicionarGasto;
         window.excluirGasto = excluirGasto;
