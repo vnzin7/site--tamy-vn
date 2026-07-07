@@ -431,40 +431,132 @@
                 </div>
             </section>
 
-            <!-- FINANÇAS -->
-            <section class="secao" id="secao-financas">
-                <div class="section-header"><h2><i class="fas fa-wallet"></i> Finanças Compartilhadas</h2></div>
-                
-                <div class="grid-2">
-                    <div class="card">
-                        <h3 class="card-title">Adicionar Gasto</h3>
-                        <div class="form-row">
-                            <div class="form-group"><label class="form-label">Descrição</label><input type="text" id="nomeGasto" class="form-input" placeholder="Ex: Supermercado"></div>
-                            <div class="form-group"><label class="form-label">Valor (R$)</label><input type="number" id="valorGasto" class="form-input" placeholder="0,00" step="0.01"></div>
-                            <div class="form-group"><label class="form-label">Categoria</label><select id="categoriaGasto" class="form-select"><option value="Alimentação">Alimentação</option><option value="Transporte">Transporte</option><option value="Moradia">Moradia</option><option value="Lazer">Lazer</option><option value="Saúde">Saúde</option><option value="Outros">Outros</option></select></div>
-                            <div class="form-group"><label class="form-label">Quem Pagou</label><select id="quemPagou" class="form-select"><option value="Eu">Eu</option><option value="Ela">Ela</option><option value="Dividido">Dividido</option></select></div>
-                            <div class="form-group"><label class="form-label">Data</label><input type="date" id="dataGasto" class="form-input"></div>
-                        </div>
-                        <button class="btn btn-primary btn-full" onclick="adicionarGasto()"><i class="fas fa-plus"></i> Adicionar Gasto</button>
-                    </div>
-                    
-                    <div class="card">
-                        <h3 class="card-title">Gastos por Categoria</h3>
-                        <div class="chart-container"><canvas id="graficoPizza"></canvas></div>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <h3 class="card-title">Histórico de Gastos</h3>
-                    <div class="table-container">
-                        <table>
-                            <thead><tr><th>Descrição</th><th>Categoria</th><th>Valor</th><th>Quem Pagou</th><th>Data</th><th></th></tr></thead>
-                            <tbody id="tabelaGastos"><tr><td colspan="6" style="text-align:center;padding:30px;">Nenhum gasto registrado</td></tr></tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
 
+<!-- FINANÇAS -->
+<section class="secao" id="secao-financas">
+    <div class="section-header"><h2><i class="fas fa-wallet"></i> Finanças Compartilhadas</h2></div>
+    
+    <!-- SALDOS -->
+    <div class="grid-3" style="margin-bottom: 24px;">
+        <div class="stat-card">
+            <div class="stat-icon bg-pink"><i class="fas fa-female"></i></div>
+            <div class="stat-info">
+                <small>Saldo da Tammy</small>
+                <strong id="saldoTammy">R$ 0,00</strong>
+                <button class="btn btn-sm btn-outline" onclick="adicionarSaldo('tammy')" style="margin-top:8px;">
+                    <i class="fas fa-plus"></i> Adicionar
+                </button>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon bg-blue"><i class="fas fa-male"></i></div>
+            <div class="stat-info">
+                <small>Saldo do VN</small>
+                <strong id="saldoVN">R$ 0,00</strong>
+                <button class="btn btn-sm btn-outline" onclick="adicionarSaldo('vn')" style="margin-top:8px;">
+                    <i class="fas fa-plus"></i> Adicionar
+                </button>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon bg-success"><i class="fas fa-hand-holding-heart"></i></div>
+            <div class="stat-info">
+                <small>Saldo Total</small>
+                <strong id="saldoTotal">R$ 0,00</strong>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ADICIONAR GASTO -->
+    <div class="grid-2">
+        <div class="card">
+            <h3 class="card-title">Adicionar Gasto</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Quem Gastou</label>
+                    <select id="quemGastou" class="form-select">
+                        <option value="tammy">👩 Tammy</option>
+                        <option value="vn">👨 VN</option>
+                        <option value="dividido">🤝 Dividido</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Descrição</label>
+                    <input type="text" id="nomeGasto" class="form-input" placeholder="Ex: Supermercado">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Valor (R$)</label>
+                    <input type="number" id="valorGasto" class="form-input" placeholder="0,00" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Categoria</label>
+                    <select id="categoriaGasto" class="form-select">
+                        <option value="Alimentação">🍕 Alimentação</option>
+                        <option value="Transporte">🚗 Transporte</option>
+                        <option value="Moradia">🏠 Moradia</option>
+                        <option value="Lazer">🎉 Lazer</option>
+                        <option value="Saúde">💊 Saúde</option>
+                        <option value="Outros">📦 Outros</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Data</label>
+                    <input type="date" id="dataGasto" class="form-input">
+                </div>
+            </div>
+            <button class="btn btn-primary btn-full" onclick="adicionarGasto()">
+                <i class="fas fa-plus"></i> Registrar Gasto
+            </button>
+        </div>
+        
+        <!-- GRÁFICO -->
+        <div class="card">
+            <h3 class="card-title">Gastos por Categoria</h3>
+            <div class="chart-container"><canvas id="graficoPizza"></canvas></div>
+        </div>
+    </div>
+    
+    <!-- RESUMO DE GASTOS -->
+    <div class="grid-3" style="margin-bottom: 24px;">
+        <div class="card" style="text-align: center;">
+            <small style="color: var(--gray-500);">Gastos da Tammy</small>
+            <div style="font-size: 1.5rem; font-weight: 700; color: var(--pink);" id="gastosTammy">R$ 0,00</div>
+        </div>
+        <div class="card" style="text-align: center;">
+            <small style="color: var(--gray-500);">Gastos do VN</small>
+            <div style="font-size: 1.5rem; font-weight: 700; color: var(--blue);" id="gastosVN">R$ 0,00</div>
+        </div>
+        <div class="card" style="text-align: center;">
+            <small style="color: var(--gray-500);">Gastos Totais</small>
+            <div style="font-size: 1.5rem; font-weight: 700; color: var(--danger);" id="gastosTotal">R$ 0,00</div>
+        </div>
+    </div>
+    
+    <!-- HISTÓRICO -->
+    <div class="card">
+        <h3 class="card-title">Histórico de Gastos</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Quem</th>
+                        <th>Descrição</th>
+                        <th>Categoria</th>
+                        <th>Valor</th>
+                        <th>Data</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="tabelaGastos">
+                    <tr><td colspan="6" style="text-align:center;padding:30px;">Nenhum gasto registrado</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+
+            
             <!-- METAS -->
             <section class="secao" id="secao-metas">
                 <div class="section-header"><h2><i class="fas fa-bullseye"></i> Metas Financeiras</h2></div>
@@ -511,33 +603,6 @@
                     <button class="btn btn-primary btn-full" onclick="adicionarPresente()"><i class="fas fa-plus"></i> Adicionar</button>
                 </div>
                 <div class="grid-auto" id="gridPresentes"></div>
-            </section>
-
-            <!-- MÚSICAS -->
-            <section class="secao" id="secao-musicas">
-                <div class="section-header"><h2><i class="fas fa-music"></i> Nossa Playlist</h2></div>
-                <div class="card">
-                    <h3 class="card-title">Adicionar Música</h3>
-                    <div class="form-row">
-                        <div class="form-group"><label class="form-label">Nome</label><input type="text" id="nomeMusica" class="form-input"></div>
-                        <div class="form-group"><label class="form-label">Artista</label><input type="text" id="artistaMusica" class="form-input"></div>
-                        <div class="form-group"><label class="form-label">Link YouTube</label><input type="url" id="linkMusica" class="form-input"></div>
-                    </div>
-                    <button class="btn btn-primary btn-full" onclick="adicionarMusica()"><i class="fas fa-plus"></i> Adicionar</button>
-                </div>
-                <div class="grid-auto" id="gridMusicas"></div>
-            </section>
-
-            <!-- GALERIA -->
-            <section class="secao" id="secao-galeria">
-                <div class="section-header"><h2><i class="fas fa-images"></i> Galeria de Momentos</h2></div>
-                <div class="card">
-                    <h3 class="card-title">Upload de Foto</h3>
-                    <div class="form-group"><label class="form-label">Selecionar Imagem</label><input type="file" id="uploadFoto" class="form-input" accept="image/*"></div>
-                    <div class="form-group"><label class="form-label">Legenda</label><input type="text" id="legendaFoto" class="form-input" placeholder="Descreva o momento..."></div>
-                    <button class="btn btn-primary btn-full" onclick="adicionarFoto()"><i class="fas fa-upload"></i> Upload</button>
-                </div>
-                <div class="grid-auto" id="gridFotos"></div>
             </section>
 
             <!-- DATAS -->
