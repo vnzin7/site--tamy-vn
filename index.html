@@ -568,8 +568,6 @@
             gastos: [],
             metas: [],
             presentes: [],
-            musicas: [],
-            fotos: [],
             eventos: [],
             tema: 'claro',
             metaMensal: 2000
@@ -974,74 +972,7 @@
             `).join('');
         }
 
-        // ============ MÚSICAS ============
-        function adicionarMusica() {
-            const nome = document.getElementById('nomeMusica').value;
-            const link = document.getElementById('linkMusica').value;
-            if (!nome || !link) { mostrarToast('Preencha nome e link!'); return; }
-            
-            AppState.musicas.push({
-                id: Date.now(),
-                nome,
-                artista: document.getElementById('artistaMusica').value,
-                link
-            });
-            
-            salvarDados();
-            atualizarMusicas();
-            mostrarToast('Música adicionada! 🎵');
-        }
-
-        function atualizarMusicas() {
-            const container = document.getElementById('gridMusicas');
-            if (AppState.musicas.length === 0) {
-                container.innerHTML = '<p style="text-align:center;grid-column:1/-1;padding:40px;color:var(--gray-500);">Nenhuma música</p>';
-                return;
-            }
-            
-            container.innerHTML = AppState.musicas.map(m => `
-                <div class="card">
-                    <strong>🎵 ${m.nome}</strong>
-                    <p style="color:var(--gray-500);">🎤 ${m.artista}</p>
-                    <a href="${m.link}" target="_blank" class="btn btn-primary btn-sm" style="margin-top:8px;"><i class="fas fa-play"></i> Tocar</a>
-                </div>
-            `).join('');
-        }
-
-        // ============ GALERIA ============
-        function adicionarFoto() {
-            const file = document.getElementById('uploadFoto').files[0];
-            if (!file) { mostrarToast('Selecione uma foto!'); return; }
-            
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                AppState.fotos.push({
-                    id: Date.now(),
-                    src: e.target.result,
-                    legenda: document.getElementById('legendaFoto').value || 'Momento especial',
-                    data: new Date().toISOString()
-                });
-                salvarDados();
-                atualizarGaleria();
-                mostrarToast('Foto adicionada! 📸');
-            };
-            reader.readAsDataURL(file);
-        }
-
-        function atualizarGaleria() {
-            const container = document.getElementById('gridFotos');
-            if (AppState.fotos.length === 0) {
-                container.innerHTML = '<p style="text-align:center;grid-column:1/-1;padding:40px;color:var(--gray-500);">Nenhuma foto</p>';
-                return;
-            }
-            
-            container.innerHTML = AppState.fotos.map(f => `
-                <div class="card" style="overflow:hidden;padding:0;">
-                    <img src="${f.src}" style="width:100%;height:200px;object-fit:cover;">
-                    <div style="padding:12px;"><p style="font-weight:500;">${f.legenda}</p><small style="color:var(--gray-500);">${formatarData(f.data)}</small></div>
-                </div>
-            `).join('');
-        }
+     
 
         // ============ DATAS ============
         function adicionarDataEspecial() {
