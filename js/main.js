@@ -228,6 +228,198 @@ function atualizarFinancas() {
             </tr>
         `).join('');
     }
+
+
+    // ============ SALDO INICIAL ============
+if (!AppState.saldoTammy) AppState.saldoTammy = 0;
+if (!AppState.saldoVN) AppState.saldoVN = 0;
+
+// ============ ADICIONAR SALDO ============
+function adicionarSaldo(pessoa) {
+    const valor = prompt(`Quanto deseja adicionar ao saldo ${pessoa === 'tammy' ? 'da Tammy' : 'do VN'}?`, '0');
+    if (valor !== null) {
+        const valorNum = parseFloat(valor);
+        if (isNaN(valorNum) || valorNum <= 0) {
+            mostrarToast('Valor inválido!');
+            return;
+        }
+        
+        if (pessoa === 'tammy') {
+            AppState.saldoTammy = (AppState.saldoTammy || 0) + valorNum;
+        } else {
+            AppState.saldoVN = (AppState.saldoVN || 0) + valorNum;
+        }
+        
+        salvarDados();
+        atualizarSaldos();
+        mostrarToast(`Saldo adicionado para ${pessoa === 'tammy' ? 'Tammy' : 'VN'}! 💰`);
+    }
+}
+
+function atualizarSaldos() {
+    document.getElementById('saldoTammy').textContent = formatarMoeda(AppState.saldoTammy || 0);
+    document.getElementById('saldoVN').textContent = formatarMoeda(AppState.saldoVN || 0);
+    document.getElementById('saldoTotal').textContent = formatarMoeda((AppState.saldoTammy || 0) + (AppState.saldoVN || 0));
+}
+
+// ============ FINANÇAS ATUALIZADA ============
+function adicionarGasto() {
+    const nome = document.getElementById('nomeGasto').value;
+    const valor = parseFloat(document.getElementById('valorGasto').value);
+    const quemGastou = document.getElementById('quemGastou').value;
+    
+    if (!nome || !valor || valor <= 0) {
+        mostrarToast('Preencha todos os campos!');
+        return;
+    }
+    
+    // Verificar saldo suficiente
+    if (quemGastou === 'tammy' && valor > (AppState.saldoTammy || 0)) {
+        mostrarToast('Saldo insuficiente da Tammy!');
+        return;
+    }
+    if (quemGastou === 'vn' && valor > (AppState.saldoVN || 0)) {
+        mostrarToast('Saldo insuficiente do VN!');
+        return;
+    }
+    if (quemGastou === 'dividido') {
+        const metade = valor / 2;
+        if (metade > (AppState.saldoTammy || 0) || metade > (AppState.saldoVN || 0)) {
+            mostrarToast('Saldo insuficiente para dividir!');
+            return;
+        }
+    }
+    
+    // Descontar do saldo
+    if (quemGastou === 'tammy') {
+        AppState.saldoTammy -= valor;
+    } else if (quemGastou === 'vn') {
+        AppState.saldoVN -= valor;
+    } else if (quemGastou === 'dividido') {
+        AppState.saldoTammy -= valor / 2;
+        AppState.saldoVN -= valor / 2;
+    }
+    
+    AppState.gastos.push({
+        id: Date.now(),
+        nome,
+        valor,
+        quemGastou,
+        categoria: document.getElementById('categoriaGasto').value,
+        data: document.getElementById('dataGasto').value
+    });
+    
+    salvarDados();
+    atualizarFinancas();
+    atualizarSaldos();
+    
+    document.getElementById('nomeGasto').value = '';
+    document.getElementById('valorGasto').value = '';
+    configurarData();
+    mostrarToast('Gasto registrado! ✅');
+}
+
+function excluirGasto(id) {
+    if (confirm('Excluir este gasto?')) {
+        const gasto = AppState.gastos.find(g => g.id === id);
+        if (gasto) {
+            // Devolver valor ao saldo
+            if (gasto.quemGastou === 'tammy') {
+                AppState.saldoTammy += gasto.valor;
+            } else if (gasto.quemGastou === 'vn') {
+                AppState.saldoVN += gasto.valor;
+            } else if (gasto.quemGastou === 'dividido') {
+                AppState.saldoTammy += gasto.valor / 2;
+                AppState.saldoVN += gasto.valor / 2;
+            }
+        }
+        
+        AppState.gastos = AppState.gastos.filter(g => g.id !== id);
+        salvarDados();
+        atualizarFinancas();
+        atualizarSaldos();
+        mostrarToast('Gasto excluído!');
+    }
+}
+
+function atualizarFinancas() {
+    // Tabela
+    const tbody = document.getElementById('tabelaGastos');
+    const gastos = [...AppState.gastos].reverse();
+    
+    if (gastos.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:30px;">Nenhum gasto registrado</td></tr>';
+    } else {
+        tbody.innerHTML = gastos.map(g => {
+            const quemEmoji = g.quemGastou === 'tammy' ? '👩 Tammy' : g.quemGastou === 'vn' ? '👨 VN' : '🤝 Dividido';
+            const quemCor = g.quemGastou === 'tammy' ? 'var(--pink)' : g.quemGastou === 'vn' ? 'var(--blue)' : 'var(--warning)';
+            
+            return `
+                <tr>
+                    <td><span style="color:${quemCor};font-weight:600;">${quemEmoji}</span></td>
+                    <td><strong>${g.nome}</strong></td>
+                    <td>${g.categoria}</td>
+                    <td style="color:var(--danger);font-weight:600;">-${formatarMoeda(g.valor)}</td>
+                    <td>${formatarData(g.data)}</td>
+                    <td>
+                        <button class="btn btn-outline btn-sm" onclick="excluirGasto(${g.id})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `;
+        }).join('');
+    }
+    
+    // Resumo de gastos
+    const gastosTammy = AppState.gastos.filter(g => g.quemGastou === 'tammy').reduce((acc, g) => acc + g.valor, 0);
+    const gastosDivididoTammy = AppState.gastos.filter(g => g.quemGastou === 'dividido').reduce((acc, g) => acc + g.valor / 2, 0);
+    
+    const gastosVN = AppState.gastos.filter(g => g.quemGastou === 'vn').reduce((acc, g) => acc + g.valor, 0);
+    const gastosDivididoVN = AppState.gastos.filter(g => g.quemGastou === 'dividido').reduce((acc, g) => acc + g.valor / 2, 0);
+    
+    document.getElementById('gastosTammy').textContent = formatarMoeda(gastosTammy + gastosDivididoTammy);
+    document.getElementById('gastosVN').textContent = formatarMoeda(gastosVN + gastosDivididoVN);
+    document.getElementById('gastosTotal').textContent = formatarMoeda(gastosTammy + gastosVN + (gastosDivididoTammy + gastosDivididoVN));
+    
+    // Gráfico
+    atualizarGraficoPizza();
+    
+    // Saldos
+    atualizarSaldos();
+}
+
+// Adicione no carregarDados:
+async function carregarDados() {
+    updateSyncStatus(false);
+    try {
+        const response = await fetch(`${JSONBIN_CONFIG.URL}/${JSONBIN_CONFIG.BIN_ID}/latest`, {
+            headers: { 'X-Master-Key': JSONBIN_CONFIG.API_KEY }
+        });
+        if (response.ok) {
+            const data = await response.json();
+            AppState = { ...AppState, ...data.record };
+            if (!AppState.saldoTammy) AppState.saldoTammy = 0;
+            if (!AppState.saldoVN) AppState.saldoVN = 0;
+            updateSyncStatus(true);
+            console.log('✅ Dados carregados da nuvem');
+            return;
+        }
+    } catch (e) {}
+    
+    const local = localStorage.getItem('appState');
+    if (local) {
+        try { 
+            AppState = { ...AppState, ...JSON.parse(local) };
+            if (!AppState.saldoTammy) AppState.saldoTammy = 0;
+            if (!AppState.saldoVN) AppState.saldoVN = 0;
+        } catch(e) {}
+    }
+    updateSyncStatus(false);
+}
+
+// Adicione nas funções globais:
+window.adicionarSaldo = adicionarSaldo;
     
     // Gráfico de Pizza
     atualizarGraficoPizza();
