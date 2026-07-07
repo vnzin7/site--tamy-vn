@@ -26,6 +26,8 @@
             --gray-200: #f1f5f9;
             --gray-100: #f8fafc;
             --white: #ffffff;
+            --pink: #ec4899;
+            --blue: #3b82f6;
             --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
             --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
             --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
@@ -82,6 +84,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            text-decoration: none;
         }
 
         .nav { display: flex; gap: 4px; flex-wrap: wrap; }
@@ -98,63 +101,27 @@
         .nav a:hover { background: var(--gray-200); }
         .nav a.ativo { background: var(--primary); color: white; }
 
-        .menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--dark);
-        }
+        .menu-btn { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--dark); }
 
-        .nav-mobile {
-            display: none;
-            width: 100%;
-            flex-direction: column;
-            gap: 4px;
-            padding-top: 12px;
-        }
+        .nav-mobile { display: none; width: 100%; flex-direction: column; gap: 4px; padding-top: 12px; }
         .nav-mobile.ativo { display: flex; }
         .nav-mobile a {
-            padding: 12px;
-            border-radius: var(--radius-md);
-            color: var(--gray-600);
-            text-decoration: none;
-            font-weight: 500;
-            cursor: pointer;
+            padding: 12px; border-radius: var(--radius-md); color: var(--gray-600);
+            text-decoration: none; font-weight: 500; cursor: pointer;
         }
         .nav-mobile a:hover { background: var(--gray-200); }
         .nav-mobile a.ativo { background: var(--primary); color: white; }
 
-        .sync-status {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.8rem;
-            color: var(--gray-500);
-        }
-        .sync-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--success);
-        }
+        .sync-status { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--gray-500); }
+        .sync-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success); }
         .sync-dot.offline { background: var(--danger); }
 
         .header-actions { display: flex; align-items: center; gap: 12px; }
 
         .btn-icon {
-            width: 36px;
-            height: 36px;
-            border: 1px solid var(--gray-300);
-            border-radius: 50%;
-            background: var(--white);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gray-600);
-            transition: var(--transition);
+            width: 36px; height: 36px; border: 1px solid var(--gray-300); border-radius: 50%;
+            background: var(--white); cursor: pointer; display: flex; align-items: center;
+            justify-content: center; color: var(--gray-600); transition: var(--transition);
         }
         .btn-icon:hover { border-color: var(--primary); color: var(--primary); }
 
@@ -164,49 +131,37 @@
 
         .welcome-banner {
             background: linear-gradient(135deg, #6366f1, #4f46e5);
-            color: white;
-            padding: 30px;
-            border-radius: var(--radius-xl);
-            margin-bottom: 24px;
+            color: white; padding: 30px; border-radius: var(--radius-xl); margin-bottom: 24px;
         }
         .welcome-banner h2 { font-size: 1.8rem; margin-bottom: 8px; }
         .welcome-banner p { opacity: 0.9; }
 
         .card {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: 24px;
-            border: 1px solid var(--gray-300);
-            margin-bottom: 20px;
+            background: var(--white); border-radius: var(--radius-lg); padding: 24px;
+            border: 1px solid var(--gray-300); margin-bottom: 20px;
         }
         .card-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 20px; }
 
         .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
         .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-        .grid-auto { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .grid-auto { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
 
         .stat-card {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: 20px;
-            border: 1px solid var(--gray-300);
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            background: var(--white); border-radius: var(--radius-lg); padding: 20px;
+            border: 1px solid var(--gray-300); display: flex; align-items: center; gap: 12px;
         }
         .stat-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
+            width: 44px; height: 44px; border-radius: var(--radius-md);
+            display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
         }
         .bg-primary { background: rgba(99,102,241,0.1); color: var(--primary); }
         .bg-success { background: rgba(16,185,129,0.1); color: var(--success); }
         .bg-warning { background: rgba(245,158,11,0.1); color: var(--warning); }
         .bg-info { background: rgba(59,130,246,0.1); color: var(--info); }
+        .bg-pink { background: rgba(236,72,153,0.1); color: var(--pink); }
+        .bg-blue { background: rgba(59,130,246,0.1); color: var(--blue); }
+        .bg-danger { background: rgba(239,68,68,0.1); color: var(--danger); }
 
         .stat-info small { display: block; font-size: 0.75rem; color: var(--gray-500); text-transform: uppercase; }
         .stat-info strong { font-size: 1.3rem; font-weight: 700; }
@@ -215,44 +170,26 @@
         .progress-bar { height: 100%; border-radius: 5px; transition: width 0.6s ease; }
         .progress-primary { background: linear-gradient(90deg, #6366f1, #818cf8); }
         .progress-success { background: linear-gradient(90deg, #10b981, #34d399); }
+        .progress-warning { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+        .progress-danger { background: linear-gradient(90deg, #ef4444, #f87171); }
 
-        .progress-header {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-bottom: 4px;
-        }
+        .progress-header { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 500; margin-bottom: 4px; }
 
         .form-group { margin-bottom: 12px; }
         .form-label { display: block; font-size: 0.8rem; font-weight: 500; color: var(--gray-600); margin-bottom: 4px; }
 
         .form-input, .form-select {
-            width: 100%;
-            padding: 10px 14px;
-            border: 1px solid var(--gray-300);
-            border-radius: 8px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            color: var(--dark);
-            background: var(--white);
+            width: 100%; padding: 10px 14px; border: 1px solid var(--gray-300); border-radius: 8px;
+            font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--dark); background: var(--white);
         }
         .form-input:focus, .form-select:focus { outline: none; border-color: var(--primary); }
 
         .form-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
 
         .btn {
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            border: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-family: 'Inter', sans-serif;
-            transition: var(--transition);
+            padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+            cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 6px;
+            font-family: 'Inter', sans-serif; transition: var(--transition);
         }
         .btn-primary { background: var(--primary); color: white; }
         .btn-primary:hover { background: var(--primary-dark); }
@@ -264,15 +201,14 @@
         .btn-full { width: 100%; justify-content: center; margin-top: 12px; }
 
         .badge {
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.7rem;
-            font-weight: 600;
+            padding: 4px 10px; border-radius: 12px; font-size: 0.7rem; font-weight: 600;
         }
         .badge-primary { background: rgba(99,102,241,0.1); color: var(--primary); }
         .badge-success { background: rgba(16,185,129,0.1); color: var(--success); }
         .badge-warning { background: rgba(245,158,11,0.1); color: var(--warning); }
         .badge-danger { background: rgba(239,68,68,0.1); color: var(--danger); }
+        .badge-pink { background: rgba(236,72,153,0.1); color: var(--pink); }
+        .badge-blue { background: rgba(59,130,246,0.1); color: var(--blue); }
 
         table { width: 100%; border-collapse: collapse; }
         th { text-align: left; padding: 10px 14px; background: var(--gray-100); color: var(--gray-600); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; }
@@ -282,56 +218,30 @@
         .chart-container { position: relative; height: 280px; width: 100%; }
 
         .meta-card {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: 20px;
+            background: var(--white); border-radius: var(--radius-lg); padding: 20px;
             border: 1px solid var(--gray-300);
         }
-        .meta-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 16px;
-        }
-        .meta-card-values {
-            display: flex;
-            justify-content: space-between;
-            margin: 12px 0;
-        }
+        .meta-card-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px; }
+        .meta-card-values { display: flex; justify-content: space-between; margin: 12px 0; }
         .meta-card-saved { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
         .meta-card-goal { font-size: 0.9rem; color: var(--gray-500); }
         .meta-card-actions { display: flex; gap: 8px; margin-top: 12px; }
 
-        .simulacao-resultado {
-            margin-top: 16px;
-            text-align: center;
-            padding: 16px;
-            background: var(--gray-100);
-            border-radius: var(--radius-md);
+        .presente-card {
+            background: var(--white); border-radius: var(--radius-lg); padding: 20px;
+            border: 1px solid var(--gray-300); transition: var(--transition);
         }
-        .simulacao-resultado strong { font-size: 1.8rem; font-weight: 700; color: var(--primary); }
+        .presente-card:hover { box-shadow: var(--shadow-md); }
+        .presente-card.comprado { opacity: 0.6; background: var(--gray-100); }
 
         .toast-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
+            position: fixed; bottom: 20px; right: 20px; z-index: 9999;
+            display: flex; flex-direction: column; gap: 8px;
         }
         .toast {
-            background: var(--white);
-            border: 1px solid var(--gray-300);
-            padding: 14px 18px;
-            border-radius: 8px;
-            box-shadow: var(--shadow-lg);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            min-width: 250px;
-            animation: slideUp 0.3s ease;
-            font-size: 0.9rem;
+            background: var(--white); border: 1px solid var(--gray-300); padding: 14px 18px;
+            border-radius: 8px; box-shadow: var(--shadow-lg); display: flex; align-items: center;
+            gap: 8px; min-width: 250px; animation: slideUp 0.3s ease; font-size: 0.9rem;
         }
         @keyframes slideUp {
             from { transform: translateY(100%); opacity: 0; }
@@ -341,10 +251,18 @@
         .section-header { margin-bottom: 24px; }
         .section-header h2 { font-size: 1.8rem; display: flex; align-items: center; gap: 10px; }
 
+        .dica-card {
+            background: linear-gradient(135deg, rgba(99,102,241,0.05), rgba(16,185,129,0.05));
+            border: 1px solid var(--primary); border-radius: var(--radius-lg);
+            padding: 20px; margin-bottom: 20px;
+        }
+        .dica-card h4 { color: var(--primary); margin-bottom: 8px; }
+        .dica-card p { color: var(--gray-600); font-size: 0.9rem; }
+
         @media (max-width: 768px) {
             .nav { display: none; }
             .menu-btn { display: block; }
-            .grid-2, .grid-4 { grid-template-columns: 1fr; }
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
             .grid-auto { grid-template-columns: 1fr; }
             .welcome-banner h2 { font-size: 1.4rem; }
         }
@@ -361,23 +279,19 @@
         <button class="menu-btn" id="btnMenu"><i class="fas fa-bars"></i></button>
         
         <nav class="nav" id="navDesktop">
-            <a onclick="mostrarSecao('dashboard')" data-secao="dashboard" class="ativo">Dashboard</a>
-            <a onclick="mostrarSecao('financas')" data-secao="financas">Finanças</a>
-            <a onclick="mostrarSecao('metas')" data-secao="metas">Metas</a>
-            <a onclick="mostrarSecao('presentes')" data-secao="presentes">Presentes</a>
-            <a onclick="mostrarSecao('musicas')" data-secao="musicas">Músicas</a>
-            <a onclick="mostrarSecao('galeria')" data-secao="galeria">Galeria</a>
-            <a onclick="mostrarSecao('datas')" data-secao="datas">Datas</a>
+            <a onclick="mostrarSecao('dashboard')" data-secao="dashboard" class="ativo">📊 Dashboard</a>
+            <a onclick="mostrarSecao('financas')" data-secao="financas">💰 Finanças</a>
+            <a onclick="mostrarSecao('metas')" data-secao="metas">🎯 Metas</a>
+            <a onclick="mostrarSecao('presentes')" data-secao="presentes">🎁 Presentes</a>
+            <a onclick="mostrarSecao('datas')" data-secao="datas">📅 Datas</a>
         </nav>
         
         <nav class="nav-mobile" id="navMobile">
-            <a onclick="mostrarSecao('dashboard')" data-secao="dashboard">Dashboard</a>
-            <a onclick="mostrarSecao('financas')" data-secao="financas">Finanças</a>
-            <a onclick="mostrarSecao('metas')" data-secao="metas">Metas</a>
-            <a onclick="mostrarSecao('presentes')" data-secao="presentes">Presentes</a>
-            <a onclick="mostrarSecao('musicas')" data-secao="musicas">Músicas</a>
-            <a onclick="mostrarSecao('galeria')" data-secao="galeria">Galeria</a>
-            <a onclick="mostrarSecao('datas')" data-secao="datas">Datas</a>
+            <a onclick="mostrarSecao('dashboard')" data-secao="dashboard">📊 Dashboard</a>
+            <a onclick="mostrarSecao('financas')" data-secao="financas">💰 Finanças</a>
+            <a onclick="mostrarSecao('metas')" data-secao="metas">🎯 Metas</a>
+            <a onclick="mostrarSecao('presentes')" data-secao="presentes">🎁 Presentes</a>
+            <a onclick="mostrarSecao('datas')" data-secao="datas">📅 Datas</a>
         </nav>
         
         <div class="header-actions">
@@ -396,18 +310,18 @@
             <!-- DASHBOARD -->
             <section class="secao ativa" id="secao-dashboard">
                 <div class="welcome-banner">
-                    <h2>Bem-vindos ao Nosso Planejamento</h2>
+                    <h2>👋 Bem-vindos ao Nosso Planejamento</h2>
                     <p>Acompanhe finanças, metas e momentos especiais do casal</p>
                 </div>
                 
                 <div class="grid-4" style="margin-bottom: 24px;">
                     <div class="stat-card">
-                        <div class="stat-icon bg-primary"><i class="fas fa-wallet"></i></div>
-                        <div class="stat-info"><small>Gastos do Mês</small><strong id="dashGastos">R$ 0,00</strong></div>
+                        <div class="stat-icon bg-pink"><i class="fas fa-female"></i></div>
+                        <div class="stat-info"><small>Saldo Tammy</small><strong id="dashSaldoTammy">R$ 0,00</strong></div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon bg-success"><i class="fas fa-piggy-bank"></i></div>
-                        <div class="stat-info"><small>Economizado</small><strong id="dashEconomia">R$ 0,00</strong></div>
+                        <div class="stat-icon bg-blue"><i class="fas fa-male"></i></div>
+                        <div class="stat-info"><small>Saldo VN</small><strong id="dashSaldoVN">R$ 0,00</strong></div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon bg-warning"><i class="fas fa-bullseye"></i></div>
@@ -419,171 +333,173 @@
                     </div>
                 </div>
                 
+                <!-- DICA FINANCEIRA DO DIA -->
+                <div class="dica-card" id="dicaDiaria">
+                    <h4>💡 Dica Financeira do Dia</h4>
+                    <p id="textoDica">Carregando...</p>
+                </div>
+                
                 <div class="grid-2">
                     <div class="card">
-                        <h3 class="card-title">Últimos Gastos</h3>
+                        <h3 class="card-title">📋 Últimos Gastos</h3>
                         <div id="dashUltimosGastos"></div>
                     </div>
                     <div class="card">
-                        <h3 class="card-title">Metas em Progresso</h3>
+                        <h3 class="card-title">🎯 Metas em Progresso</h3>
                         <div id="dashMetasProgresso"></div>
                     </div>
                 </div>
             </section>
 
+            <!-- FINANÇAS -->
+            <section class="secao" id="secao-financas">
+                <div class="section-header"><h2><i class="fas fa-wallet"></i> Finanças Compartilhadas</h2></div>
+                
+                <!-- SALDOS -->
+                <div class="grid-3" style="margin-bottom: 24px;">
+                    <div class="stat-card">
+                        <div class="stat-icon bg-pink"><i class="fas fa-female"></i></div>
+                        <div class="stat-info">
+                            <small>Saldo da Tammy</small>
+                            <strong id="saldoTammy">R$ 0,00</strong>
+                            <button class="btn btn-sm btn-outline" onclick="adicionarSaldo('tammy')" style="margin-top:8px;">
+                                <i class="fas fa-plus"></i> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon bg-blue"><i class="fas fa-male"></i></div>
+                        <div class="stat-info">
+                            <small>Saldo do VN</small>
+                            <strong id="saldoVN">R$ 0,00</strong>
+                            <button class="btn btn-sm btn-outline" onclick="adicionarSaldo('vn')" style="margin-top:8px;">
+                                <i class="fas fa-plus"></i> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon bg-success"><i class="fas fa-hand-holding-heart"></i></div>
+                        <div class="stat-info">
+                            <small>Saldo Total</small>
+                            <strong id="saldoTotal">R$ 0,00</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ADICIONAR GASTO -->
+                <div class="grid-2">
+                    <div class="card">
+                        <h3 class="card-title">Registrar Gasto</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Quem Gastou</label>
+                                <select id="quemGastou" class="form-select">
+                                    <option value="tammy">👩 Tammy</option>
+                                    <option value="vn">👨 VN</option>
+                                    <option value="dividido">🤝 Dividido</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Descrição</label>
+                                <input type="text" id="nomeGasto" class="form-input" placeholder="Ex: Supermercado">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Valor (R$)</label>
+                                <input type="number" id="valorGasto" class="form-input" placeholder="0,00" step="0.01">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Categoria</label>
+                                <select id="categoriaGasto" class="form-select">
+                                    <option value="Alimentação">🍕 Alimentação</option>
+                                    <option value="Transporte">🚗 Transporte</option>
+                                    <option value="Moradia">🏠 Moradia</option>
+                                    <option value="Lazer">🎉 Lazer</option>
+                                    <option value="Saúde">💊 Saúde</option>
+                                    <option value="Outros">📦 Outros</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Data</label>
+                                <input type="date" id="dataGasto" class="form-input">
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-full" onclick="adicionarGasto()">
+                            <i class="fas fa-plus"></i> Registrar Gasto
+                        </button>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">Gastos por Categoria</h3>
+                        <div class="chart-container"><canvas id="graficoPizza"></canvas></div>
+                    </div>
+                </div>
+                
+                <!-- RESUMO DE GASTOS -->
+                <div class="grid-3" style="margin-bottom: 24px;">
+                    <div class="card" style="text-align: center;">
+                        <small style="color: var(--gray-500);">Gastos da Tammy</small>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--pink);" id="gastosTammy">R$ 0,00</div>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <small style="color: var(--gray-500);">Gastos do VN</small>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--blue);" id="gastosVN">R$ 0,00</div>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <small style="color: var(--gray-500);">Gastos Totais</small>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--danger);" id="gastosTotal">R$ 0,00</div>
+                    </div>
+                </div>
+                
+                <!-- HISTÓRICO -->
+                <div class="card">
+                    <h3 class="card-title">Histórico de Gastos</h3>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Quem</th>
+                                    <th>Descrição</th>
+                                    <th>Categoria</th>
+                                    <th>Valor</th>
+                                    <th>Data</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabelaGastos">
+                                <tr><td colspan="6" style="text-align:center;padding:30px;">Nenhum gasto registrado</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
 
-<!-- FINANÇAS -->
-<section class="secao" id="secao-financas">
-    <div class="section-header"><h2><i class="fas fa-wallet"></i> Finanças Compartilhadas</h2></div>
-    
-    <!-- SALDOS -->
-    <div class="grid-3" style="margin-bottom: 24px;">
-        <div class="stat-card">
-            <div class="stat-icon bg-pink"><i class="fas fa-female"></i></div>
-            <div class="stat-info">
-                <small>Saldo da Tammy</small>
-                <strong id="saldoTammy">R$ 0,00</strong>
-                <button class="btn btn-sm btn-outline" onclick="adicionarSaldo('tammy')" style="margin-top:8px;">
-                    <i class="fas fa-plus"></i> Adicionar
-                </button>
-            </div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-icon bg-blue"><i class="fas fa-male"></i></div>
-            <div class="stat-info">
-                <small>Saldo do VN</small>
-                <strong id="saldoVN">R$ 0,00</strong>
-                <button class="btn btn-sm btn-outline" onclick="adicionarSaldo('vn')" style="margin-top:8px;">
-                    <i class="fas fa-plus"></i> Adicionar
-                </button>
-            </div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-icon bg-success"><i class="fas fa-hand-holding-heart"></i></div>
-            <div class="stat-info">
-                <small>Saldo Total</small>
-                <strong id="saldoTotal">R$ 0,00</strong>
-            </div>
-        </div>
-    </div>
-    
-    <!-- ADICIONAR GASTO -->
-    <div class="grid-2">
-        <div class="card">
-            <h3 class="card-title">Adicionar Gasto</h3>
-            <div class="form-row">
-                <div class="form-group">
-                    <label class="form-label">Quem Gastou</label>
-                    <select id="quemGastou" class="form-select">
-                        <option value="tammy">👩 Tammy</option>
-                        <option value="vn">👨 VN</option>
-                        <option value="dividido">🤝 Dividido</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Descrição</label>
-                    <input type="text" id="nomeGasto" class="form-input" placeholder="Ex: Supermercado">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Valor (R$)</label>
-                    <input type="number" id="valorGasto" class="form-input" placeholder="0,00" step="0.01">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Categoria</label>
-                    <select id="categoriaGasto" class="form-select">
-                        <option value="Alimentação">🍕 Alimentação</option>
-                        <option value="Transporte">🚗 Transporte</option>
-                        <option value="Moradia">🏠 Moradia</option>
-                        <option value="Lazer">🎉 Lazer</option>
-                        <option value="Saúde">💊 Saúde</option>
-                        <option value="Outros">📦 Outros</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Data</label>
-                    <input type="date" id="dataGasto" class="form-input">
-                </div>
-            </div>
-            <button class="btn btn-primary btn-full" onclick="adicionarGasto()">
-                <i class="fas fa-plus"></i> Registrar Gasto
-            </button>
-        </div>
-        
-        <!-- GRÁFICO -->
-        <div class="card">
-            <h3 class="card-title">Gastos por Categoria</h3>
-            <div class="chart-container"><canvas id="graficoPizza"></canvas></div>
-        </div>
-    </div>
-    
-    <!-- RESUMO DE GASTOS -->
-    <div class="grid-3" style="margin-bottom: 24px;">
-        <div class="card" style="text-align: center;">
-            <small style="color: var(--gray-500);">Gastos da Tammy</small>
-            <div style="font-size: 1.5rem; font-weight: 700; color: var(--pink);" id="gastosTammy">R$ 0,00</div>
-        </div>
-        <div class="card" style="text-align: center;">
-            <small style="color: var(--gray-500);">Gastos do VN</small>
-            <div style="font-size: 1.5rem; font-weight: 700; color: var(--blue);" id="gastosVN">R$ 0,00</div>
-        </div>
-        <div class="card" style="text-align: center;">
-            <small style="color: var(--gray-500);">Gastos Totais</small>
-            <div style="font-size: 1.5rem; font-weight: 700; color: var(--danger);" id="gastosTotal">R$ 0,00</div>
-        </div>
-    </div>
-    
-    <!-- HISTÓRICO -->
-    <div class="card">
-        <h3 class="card-title">Histórico de Gastos</h3>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Quem</th>
-                        <th>Descrição</th>
-                        <th>Categoria</th>
-                        <th>Valor</th>
-                        <th>Data</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody id="tabelaGastos">
-                    <tr><td colspan="6" style="text-align:center;padding:30px;">Nenhum gasto registrado</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</section>
-
-
-            
             <!-- METAS -->
             <section class="secao" id="secao-metas">
                 <div class="section-header"><h2><i class="fas fa-bullseye"></i> Metas Financeiras</h2></div>
                 
-                <div class="grid-2">
-                    <div class="card">
-                        <h3 class="card-title">Nova Meta</h3>
-                        <div class="form-group"><label class="form-label">Nome da Meta</label><input type="text" id="nomeMeta" class="form-input" placeholder="Ex: Viagem para Europa"></div>
-                        <div class="form-row">
-                            <div class="form-group"><label class="form-label">Valor Total (R$)</label><input type="number" id="valorMeta" class="form-input" placeholder="10.000,00" step="0.01"></div>
-                            <div class="form-group"><label class="form-label">Já Economizado (R$)</label><input type="number" id="valorAtualMeta" class="form-input" placeholder="2.500,00" step="0.01"></div>
-                        </div>
-                        <div class="form-group"><label class="form-label">Data Limite (opcional)</label><input type="date" id="dataMeta" class="form-input"></div>
-                        <button class="btn btn-success btn-full" onclick="adicionarMeta()"><i class="fas fa-plus"></i> Criar Meta</button>
+                <div class="card">
+                    <h3 class="card-title">Nova Meta</h3>
+                    <div class="form-group">
+                        <label class="form-label">Nome da Meta</label>
+                        <input type="text" id="nomeMeta" class="form-input" placeholder="Ex: Viagem para Europa">
                     </div>
-                    
-                    <div class="card">
-                        <h3 class="card-title">Simulador de Investimentos</h3>
-                        <div class="form-row">
-                            <div class="form-group"><label class="form-label">Valor Inicial (R$)</label><input type="number" id="simInicial" class="form-input" value="1000"></div>
-                            <div class="form-group"><label class="form-label">Aporte Mensal (R$)</label><input type="number" id="simMensal" class="form-input" value="500"></div>
-                            <div class="form-group"><label class="form-label">Taxa (% a.a.)</label><input type="number" id="simTaxa" class="form-input" value="12"></div>
-                            <div class="form-group"><label class="form-label">Anos</label><input type="number" id="simTempo" class="form-input" value="10"></div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Valor Total (R$)</label>
+                            <input type="number" id="valorMeta" class="form-input" placeholder="10.000,00" step="0.01">
                         </div>
-                        <button class="btn btn-primary btn-full" onclick="simularJuros()"><i class="fas fa-calculator"></i> Calcular</button>
-                        <div class="simulacao-resultado"><small>Valor Futuro Estimado</small><strong id="resultadoSimulacao">R$ 0,00</strong></div>
+                        <div class="form-group">
+                            <label class="form-label">Já Economizado (R$)</label>
+                            <input type="number" id="valorAtualMeta" class="form-input" placeholder="2.500,00" step="0.01">
+                        </div>
                     </div>
+                    <div class="form-group">
+                        <label class="form-label">Data Limite (opcional)</label>
+                        <input type="date" id="dataMeta" class="form-input">
+                    </div>
+                    <button class="btn btn-success btn-full" onclick="adicionarMeta()">
+                        <i class="fas fa-plus"></i> Criar Meta
+                    </button>
                 </div>
                 
                 <div class="grid-auto" id="gridMetas"></div>
@@ -592,30 +508,67 @@
             <!-- PRESENTES -->
             <section class="secao" id="secao-presentes">
                 <div class="section-header"><h2><i class="fas fa-gift"></i> Lista de Presentes</h2></div>
+                
                 <div class="card">
                     <h3 class="card-title">Adicionar Presente</h3>
                     <div class="form-row">
-                        <div class="form-group"><label class="form-label">Nome</label><input type="text" id="nomePresente" class="form-input"></div>
-                        <div class="form-group"><label class="form-label">Valor (R$)</label><input type="number" id="valorPresente" class="form-input" step="0.01"></div>
-                        <div class="form-group"><label class="form-label">Prioridade</label><select id="prioridadePresente" class="form-select"><option value="alta">Alta</option><option value="media">Média</option><option value="baixa">Baixa</option></select></div>
-                        <div class="form-group"><label class="form-label">Link</label><input type="url" id="linkPresente" class="form-input" placeholder="https://..."></div>
+                        <div class="form-group">
+                            <label class="form-label">Nome do Presente</label>
+                            <input type="text" id="nomePresente" class="form-input" placeholder="Ex: Air Fryer">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Valor Estimado (R$)</label>
+                            <input type="number" id="valorPresente" class="form-input" step="0.01" placeholder="0,00">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Prioridade</label>
+                            <select id="prioridadePresente" class="form-select">
+                                <option value="alta">🔥 Alta</option>
+                                <option value="media">⭐ Média</option>
+                                <option value="baixa">💤 Baixa</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Link para Compra (opcional)</label>
+                            <input type="url" id="linkPresente" class="form-input" placeholder="https://...">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Quem Adicionou</label>
+                            <select id="quemAdicionou" class="form-select">
+                                <option value="tammy">👩 Tammy</option>
+                                <option value="vn">👨 VN</option>
+                            </select>
+                        </div>
                     </div>
-                    <button class="btn btn-primary btn-full" onclick="adicionarPresente()"><i class="fas fa-plus"></i> Adicionar</button>
+                    <button class="btn btn-primary btn-full" onclick="adicionarPresente()">
+                        <i class="fas fa-plus"></i> Adicionar Presente
+                    </button>
                 </div>
+                
                 <div class="grid-auto" id="gridPresentes"></div>
             </section>
 
             <!-- DATAS -->
             <section class="secao" id="secao-datas">
                 <div class="section-header"><h2><i class="fas fa-calendar"></i> Datas Especiais</h2></div>
+                
                 <div class="card">
-                    <h3 class="card-title">Adicionar Data</h3>
+                    <h3 class="card-title">Adicionar Data Especial</h3>
                     <div class="form-row">
-                        <div class="form-group"><label class="form-label">Evento</label><input type="text" id="nomeEvento" class="form-input"></div>
-                        <div class="form-group"><label class="form-label">Data</label><input type="date" id="dataEvento" class="form-input"></div>
+                        <div class="form-group">
+                            <label class="form-label">Nome do Evento</label>
+                            <input type="text" id="nomeEvento" class="form-input" placeholder="Ex: Aniversário de Namoro">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Data</label>
+                            <input type="date" id="dataEvento" class="form-input">
+                        </div>
                     </div>
-                    <button class="btn btn-primary btn-full" onclick="adicionarDataEspecial()"><i class="fas fa-plus"></i> Adicionar</button>
+                    <button class="btn btn-primary btn-full" onclick="adicionarDataEspecial()">
+                        <i class="fas fa-plus"></i> Adicionar Data
+                    </button>
                 </div>
+                
                 <div class="grid-auto" id="gridEventos"></div>
             </section>
         </div>
@@ -634,12 +587,31 @@
             metas: [],
             presentes: [],
             eventos: [],
-            tema: 'claro',
-            metaMensal: 2000
+            saldoTammy: 0,
+            saldoVN: 0,
+            tema: 'claro'
         };
 
         let graficoPizza = null;
-        let isSyncing = false;
+
+        // ============ DICAS FINANCEIRAS ============
+        const dicasFinanceiras = [
+            "💰 Regra 50-30-20: 50% para gastos essenciais, 30% para lazer e 20% para poupança.",
+            "📊 Anote todos os gastos, mesmo os pequenos. Eles fazem diferença no fim do mês!",
+            "🎯 Defina metas claras: 'Quero economizar R$ 5.000 até dezembro' é melhor que 'quero economizar'.",
+            "🛒 Faça lista de compras e evite ir ao mercado com fome para não gastar mais.",
+            "💳 Cuidado com parcelamentos! Some todas as parcelas antes de comprar.",
+            "🏦 Tenha uma reserva de emergência de pelo menos 3 meses de gastos.",
+            "📱 Use apps de cashback e compare preços antes de comprar.",
+            "🚗 Para viagens, planeje com antecedência e pesquise bastante.",
+            "💡 Pequenas economias diárias viram grandes valores no fim do ano.",
+            "❤️ Conversem sobre dinheiro regularmente. Comunicação é essencial!"
+        ];
+
+        function gerarDicaDiaria() {
+            const dica = dicasFinanceiras[Math.floor(Math.random() * dicasFinanceiras.length)];
+            document.getElementById('textoDica').textContent = dica;
+        }
 
         // ============ INICIALIZAÇÃO ============
         document.addEventListener('DOMContentLoaded', async () => {
@@ -647,6 +619,7 @@
             mostrarSecao('dashboard');
             aplicarTema();
             configurarData();
+            gerarDicaDiaria();
             
             document.getElementById('btnMenu').addEventListener('click', () => {
                 document.getElementById('navMobile').classList.toggle('ativo');
@@ -665,6 +638,8 @@
                 if (response.ok) {
                     const data = await response.json();
                     AppState = { ...AppState, ...data.record };
+                    if (!AppState.saldoTammy) AppState.saldoTammy = 0;
+                    if (!AppState.saldoVN) AppState.saldoVN = 0;
                     updateSyncStatus(true);
                     console.log('✅ Dados carregados da nuvem');
                     return;
@@ -673,24 +648,24 @@
             
             const local = localStorage.getItem('appState');
             if (local) {
-                try { AppState = { ...AppState, ...JSON.parse(local) }; } catch(e) {}
+                try { 
+                    AppState = { ...AppState, ...JSON.parse(local) };
+                    if (!AppState.saldoTammy) AppState.saldoTammy = 0;
+                    if (!AppState.saldoVN) AppState.saldoVN = 0;
+                } catch(e) {}
             }
             updateSyncStatus(false);
         }
 
         async function salvarDados() {
-            if (isSyncing) return;
-            isSyncing = true;
-            
             const dadosParaSalvar = {
                 gastos: AppState.gastos,
                 metas: AppState.metas,
                 presentes: AppState.presentes,
-                musicas: AppState.musicas,
-                fotos: AppState.fotos,
                 eventos: AppState.eventos,
-                tema: AppState.tema,
-                metaMensal: AppState.metaMensal
+                saldoTammy: AppState.saldoTammy,
+                saldoVN: AppState.saldoVN,
+                tema: AppState.tema
             };
             
             try {
@@ -708,7 +683,6 @@
             }
             
             localStorage.setItem('appState', JSON.stringify(AppState));
-            isSyncing = false;
         }
 
         async function sincronizarNuvem() {
@@ -721,12 +695,14 @@
                     const nuvem = JSON.stringify(data.record);
                     const local = JSON.stringify({
                         gastos: AppState.gastos, metas: AppState.metas,
-                        presentes: AppState.presentes, musicas: AppState.musicas,
-                        fotos: AppState.fotos, eventos: AppState.eventos,
-                        tema: AppState.tema, metaMensal: AppState.metaMensal
+                        presentes: AppState.presentes, eventos: AppState.eventos,
+                        saldoTammy: AppState.saldoTammy, saldoVN: AppState.saldoVN,
+                        tema: AppState.tema
                     });
                     if (nuvem !== local) {
                         AppState = { ...AppState, ...data.record };
+                        if (!AppState.saldoTammy) AppState.saldoTammy = 0;
+                        if (!AppState.saldoVN) AppState.saldoVN = 0;
                         atualizarTela();
                     }
                     updateSyncStatus(true);
@@ -749,8 +725,6 @@
             else if (pagina === 'financas') atualizarFinancas();
             else if (pagina === 'metas') atualizarMetas();
             else if (pagina === 'presentes') atualizarPresentes();
-            else if (pagina === 'musicas') atualizarMusicas();
-            else if (pagina === 'galeria') atualizarGaleria();
             else if (pagina === 'datas') atualizarEventos();
         }
 
@@ -770,8 +744,6 @@
             if (nome === 'financas') { configurarData(); atualizarFinancas(); }
             if (nome === 'metas') atualizarMetas();
             if (nome === 'presentes') atualizarPresentes();
-            if (nome === 'musicas') atualizarMusicas();
-            if (nome === 'galeria') atualizarGaleria();
             if (nome === 'datas') { configurarData(); atualizarEventos(); }
         }
 
@@ -808,16 +780,8 @@
             const mes = hoje.getMonth();
             const ano = hoje.getFullYear();
             
-            const gastosMes = AppState.gastos.filter(g => {
-                const d = new Date(g.data);
-                return d.getMonth() === mes && d.getFullYear() === ano;
-            });
-            
-            const total = gastosMes.reduce((acc, g) => acc + g.valor, 0);
-            const econ = Math.max(0, AppState.metaMensal - total);
-            
-            document.getElementById('dashGastos').textContent = formatarMoeda(total);
-            document.getElementById('dashEconomia').textContent = formatarMoeda(econ);
+            document.getElementById('dashSaldoTammy').textContent = formatarMoeda(AppState.saldoTammy || 0);
+            document.getElementById('dashSaldoVN').textContent = formatarMoeda(AppState.saldoVN || 0);
             document.getElementById('dashMetas').textContent = AppState.metas.filter(m => !m.concluida).length;
             
             const eventos = AppState.eventos.filter(e => new Date(e.data) > hoje).sort((a,b) => new Date(a.data) - new Date(b.data));
@@ -827,7 +791,10 @@
             const container = document.getElementById('dashUltimosGastos');
             const ultimos = [...AppState.gastos].reverse().slice(0, 5);
             container.innerHTML = ultimos.length === 0 ? '<p style="color:var(--gray-500);text-align:center;padding:20px;">Nenhum gasto</p>' :
-                ultimos.map(g => `<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--gray-200);"><div><strong>${g.nome}</strong><br><small style="color:var(--gray-500);">${g.categoria} • ${formatarData(g.data)}</small></div><span style="color:var(--danger);font-weight:600;">-${formatarMoeda(g.valor)}</span></div>`).join('');
+                ultimos.map(g => {
+                    const quem = g.quemGastou === 'tammy' ? '👩 Tammy' : g.quemGastou === 'vn' ? '👨 VN' : '🤝 Dividido';
+                    return `<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--gray-200);"><div><strong>${g.nome}</strong><br><small style="color:var(--gray-500);">${quem} • ${g.categoria}</small></div><span style="color:var(--danger);font-weight:600;">-${formatarMoeda(g.valor)}</span></div>`;
+                }).join('');
             
             const metasContainer = document.getElementById('dashMetasProgresso');
             const ativas = AppState.metas.filter(m => !m.concluida).slice(0, 3);
@@ -838,17 +805,72 @@
                 }).join('');
         }
 
+        // ============ SALDO ============
+        function adicionarSaldo(pessoa) {
+            const valor = prompt(`Quanto deseja adicionar ao saldo ${pessoa === 'tammy' ? 'da Tammy' : 'do VN'}?`, '0');
+            if (valor !== null) {
+                const valorNum = parseFloat(valor);
+                if (isNaN(valorNum) || valorNum <= 0) {
+                    mostrarToast('Valor inválido!');
+                    return;
+                }
+                
+                if (pessoa === 'tammy') {
+                    AppState.saldoTammy = (AppState.saldoTammy || 0) + valorNum;
+                } else {
+                    AppState.saldoVN = (AppState.saldoVN || 0) + valorNum;
+                }
+                
+                salvarDados();
+                atualizarSaldos();
+                mostrarToast(`Saldo adicionado para ${pessoa === 'tammy' ? 'Tammy' : 'VN'}! 💰`);
+            }
+        }
+
+        function atualizarSaldos() {
+            document.getElementById('saldoTammy').textContent = formatarMoeda(AppState.saldoTammy || 0);
+            document.getElementById('saldoVN').textContent = formatarMoeda(AppState.saldoVN || 0);
+            document.getElementById('saldoTotal').textContent = formatarMoeda((AppState.saldoTammy || 0) + (AppState.saldoVN || 0));
+        }
+
         // ============ FINANÇAS ============
         function adicionarGasto() {
             const nome = document.getElementById('nomeGasto').value;
             const valor = parseFloat(document.getElementById('valorGasto').value);
-            if (!nome || !valor || valor <= 0) { mostrarToast('Preencha todos os campos!'); return; }
+            const quemGastou = document.getElementById('quemGastou').value;
+            
+            if (!nome || !valor || valor <= 0) {
+                mostrarToast('Preencha todos os campos!');
+                return;
+            }
+            
+            if (quemGastou === 'tammy' && valor > (AppState.saldoTammy || 0)) {
+                mostrarToast('Saldo insuficiente da Tammy!');
+                return;
+            }
+            if (quemGastou === 'vn' && valor > (AppState.saldoVN || 0)) {
+                mostrarToast('Saldo insuficiente do VN!');
+                return;
+            }
+            if (quemGastou === 'dividido') {
+                const metade = valor / 2;
+                if (metade > (AppState.saldoTammy || 0) || metade > (AppState.saldoVN || 0)) {
+                    mostrarToast('Saldo insuficiente para dividir!');
+                    return;
+                }
+            }
+            
+            if (quemGastou === 'tammy') AppState.saldoTammy -= valor;
+            else if (quemGastou === 'vn') AppState.saldoVN -= valor;
+            else if (quemGastou === 'dividido') {
+                AppState.saldoTammy -= valor / 2;
+                AppState.saldoVN -= valor / 2;
+            }
             
             AppState.gastos.push({
                 id: Date.now(),
-                nome, valor,
+                nome, valor, quemGastou,
                 categoria: document.getElementById('categoriaGasto').value,
-                quemPagou: document.getElementById('quemPagou').value,
                 data: document.getElementById('dataGasto').value
             });
             
@@ -857,15 +879,25 @@
             document.getElementById('nomeGasto').value = '';
             document.getElementById('valorGasto').value = '';
             configurarData();
-            mostrarToast('Gasto adicionado! ✅');
+            mostrarToast('Gasto registrado! ✅');
         }
 
         function excluirGasto(id) {
-            if (confirm('Excluir este gasto?')) {
+            if (confirm('Excluir este gasto? O valor será devolvido ao saldo.')) {
+                const gasto = AppState.gastos.find(g => g.id === id);
+                if (gasto) {
+                    if (gasto.quemGastou === 'tammy') AppState.saldoTammy += gasto.valor;
+                    else if (gasto.quemGastou === 'vn') AppState.saldoVN += gasto.valor;
+                    else if (gasto.quemGastou === 'dividido') {
+                        AppState.saldoTammy += gasto.valor / 2;
+                        AppState.saldoVN += gasto.valor / 2;
+                    }
+                }
+                
                 AppState.gastos = AppState.gastos.filter(g => g.id !== id);
                 salvarDados();
                 atualizarFinancas();
-                mostrarToast('Gasto excluído!');
+                mostrarToast('Gasto excluído! Valor devolvido.');
             }
         }
 
@@ -873,10 +905,34 @@
             const tbody = document.getElementById('tabelaGastos');
             const gastos = [...AppState.gastos].reverse();
             
-            tbody.innerHTML = gastos.length === 0 ? '<tr><td colspan="6" style="text-align:center;padding:30px;">Nenhum gasto registrado</td></tr>' :
-                gastos.map(g => `<tr><td><strong>${g.nome}</strong></td><td>${g.categoria}</td><td style="color:var(--danger);font-weight:600;">-${formatarMoeda(g.valor)}</td><td>${g.quemPagou}</td><td>${formatarData(g.data)}</td><td><button class="btn btn-outline btn-sm" onclick="excluirGasto(${g.id})"><i class="fas fa-trash"></i></button></td></tr>`).join('');
+            if (gastos.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:30px;">Nenhum gasto registrado</td></tr>';
+            } else {
+                tbody.innerHTML = gastos.map(g => {
+                    const quem = g.quemGastou === 'tammy' ? '👩 Tammy' : g.quemGastou === 'vn' ? '👨 VN' : '🤝 Dividido';
+                    const cor = g.quemGastou === 'tammy' ? 'var(--pink)' : g.quemGastou === 'vn' ? 'var(--blue)' : 'var(--warning)';
+                    return `<tr>
+                        <td><span style="color:${cor};font-weight:600;">${quem}</span></td>
+                        <td><strong>${g.nome}</strong></td>
+                        <td>${g.categoria}</td>
+                        <td style="color:var(--danger);font-weight:600;">-${formatarMoeda(g.valor)}</td>
+                        <td>${formatarData(g.data)}</td>
+                        <td><button class="btn btn-outline btn-sm" onclick="excluirGasto(${g.id})"><i class="fas fa-trash"></i></button></td>
+                    </tr>`;
+                }).join('');
+            }
+            
+            const gastosTammy = AppState.gastos.filter(g => g.quemGastou === 'tammy').reduce((acc, g) => acc + g.valor, 0) + 
+                               AppState.gastos.filter(g => g.quemGastou === 'dividido').reduce((acc, g) => acc + g.valor/2, 0);
+            const gastosVN = AppState.gastos.filter(g => g.quemGastou === 'vn').reduce((acc, g) => acc + g.valor, 0) + 
+                            AppState.gastos.filter(g => g.quemGastou === 'dividido').reduce((acc, g) => acc + g.valor/2, 0);
+            
+            document.getElementById('gastosTammy').textContent = formatarMoeda(gastosTammy);
+            document.getElementById('gastosVN').textContent = formatarMoeda(gastosVN);
+            document.getElementById('gastosTotal').textContent = formatarMoeda(gastosTammy + gastosVN);
             
             atualizarGraficoPizza();
+            atualizarSaldos();
         }
 
         function atualizarGraficoPizza() {
@@ -898,7 +954,7 @@
                 type: 'doughnut',
                 data: {
                     labels,
-                    datasets: [{ data, backgroundColor: ['#6366f1','#10b981','#f59e0b','#ef4444','#3b82f6','#8b5cf6'], borderWidth: 2, borderColor: '#fff' }]
+                    datasets: [{ data, backgroundColor: ['#6366f1','#10b981','#f59e0b','#ef4444','#3b82f6','#ec4899'], borderWidth: 2, borderColor: '#fff' }]
                 },
                 options: {
                     responsive: true,
@@ -965,6 +1021,7 @@
             
             container.innerHTML = AppState.metas.map(m => {
                 const pct = Math.min(100, (m.valorAtual/m.valorTotal)*100);
+                const falta = m.valorTotal - m.valorAtual;
                 return `
                 <div class="meta-card">
                     <div class="meta-card-header">
@@ -972,32 +1029,18 @@
                         <span class="badge ${m.concluida ? 'badge-success' : 'badge-primary'}">${m.concluida ? '✅ Concluída' : '⏳ Em andamento'}</span>
                     </div>
                     <div class="progress-header"><span>Progresso</span><span>${pct.toFixed(1)}%</span></div>
-                    <div class="progress"><div class="progress-bar ${m.concluida ? 'progress-success' : 'progress-primary'}" style="width:${pct}%"></div></div>
+                    <div class="progress"><div class="progress-bar ${pct >= 100 ? 'progress-success' : pct >= 50 ? 'progress-primary' : 'progress-warning'}" style="width:${pct}%"></div></div>
                     <div class="meta-card-values">
                         <div><small style="color:var(--gray-500);">Economizado</small><div class="meta-card-saved">${formatarMoeda(m.valorAtual)}</div></div>
                         <div style="text-align:right;"><small style="color:var(--gray-500);">Meta</small><div class="meta-card-goal">${formatarMoeda(m.valorTotal)}</div></div>
                     </div>
-                    ${!m.concluida ? `<div style="background:var(--gray-100);padding:10px;border-radius:8px;margin-bottom:12px;">Faltam: <strong style="color:var(--primary);">${formatarMoeda(m.valorTotal - m.valorAtual)}</strong></div>` : ''}
+                    ${!m.concluida ? `<div style="background:var(--gray-100);padding:10px;border-radius:8px;margin-bottom:12px;">Faltam: <strong style="color:var(--primary);">${formatarMoeda(falta)}</strong></div>` : '<div style="background:rgba(16,185,129,0.1);padding:10px;border-radius:8px;margin-bottom:12px;color:var(--success);">🎉 Meta concluída! Parabéns!</div>'}
                     <div class="meta-card-actions">
                         <button class="btn btn-primary btn-sm" onclick="atualizarValorMeta(${m.id})"><i class="fas fa-edit"></i> Atualizar</button>
                         <button class="btn btn-outline btn-sm" onclick="excluirMeta(${m.id})"><i class="fas fa-trash"></i></button>
                     </div>
                 </div>`;
             }).join('');
-        }
-
-        function simularJuros() {
-            const inicial = parseFloat(document.getElementById('simInicial').value) || 0;
-            const mensal = parseFloat(document.getElementById('simMensal').value) || 0;
-            const taxa = parseFloat(document.getElementById('simTaxa').value) || 0;
-            const anos = parseInt(document.getElementById('simTempo').value) || 0;
-            
-            const taxaM = Math.pow(1 + taxa/100, 1/12) - 1;
-            let montante = inicial;
-            for (let i = 0; i < anos*12; i++) montante = (montante + mensal) * (1 + taxaM);
-            
-            document.getElementById('resultadoSimulacao').textContent = formatarMoeda(montante);
-            mostrarToast(`Projeção: ${formatarMoeda(montante)}`);
         }
 
         // ============ PRESENTES ============
@@ -1010,7 +1053,10 @@
                 nome,
                 valor: parseFloat(document.getElementById('valorPresente').value) || 0,
                 prioridade: document.getElementById('prioridadePresente').value,
-                link: document.getElementById('linkPresente').value
+                link: document.getElementById('linkPresente').value,
+                quemAdicionou: document.getElementById('quemAdicionou').value,
+                comprado: false,
+                dataAdicao: new Date().toISOString()
             });
             
             salvarDados();
@@ -1018,26 +1064,71 @@
             mostrarToast('Presente adicionado! 🎁');
         }
 
+        function marcarComprado(id) {
+            const presente = AppState.presentes.find(p => p.id === id);
+            if (presente) {
+                presente.comprado = !presente.comprado;
+                salvarDados();
+                atualizarPresentes();
+                mostrarToast(presente.comprado ? 'Marcado como comprado! ✅' : 'Desmarcado! 🔄');
+            }
+        }
+
+        function excluirPresente(id) {
+            if (confirm('Excluir este presente?')) {
+                AppState.presentes = AppState.presentes.filter(p => p.id !== id);
+                salvarDados();
+                atualizarPresentes();
+                mostrarToast('Presente excluído!');
+            }
+        }
+
         function atualizarPresentes() {
             const container = document.getElementById('gridPresentes');
             if (AppState.presentes.length === 0) {
-                container.innerHTML = '<p style="text-align:center;grid-column:1/-1;padding:40px;color:var(--gray-500);">Nenhum presente</p>';
+                container.innerHTML = '<p style="text-align:center;grid-column:1/-1;padding:40px;color:var(--gray-500);">Nenhum presente na lista</p>';
                 return;
             }
             
-            container.innerHTML = AppState.presentes.map(p => `
-                <div class="card">
-                    <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:12px;">
-                        <strong>${p.nome}</strong>
-                        <span class="badge badge-${p.prioridade === 'alta' ? 'danger' : p.prioridade === 'media' ? 'warning' : 'success'}">${p.prioridade === 'alta' ? '🔥 Alta' : p.prioridade === 'media' ? '⭐ Média' : '💤 Baixa'}</span>
+            const naoComprados = AppState.presentes.filter(p => !p.comprado);
+            const comprados = AppState.presentes.filter(p => p.comprado);
+            
+            let html = '';
+            
+            if (naoComprados.length > 0) {
+                html += '<h4 style="grid-column:1/-1;margin-bottom:8px;">🎁 Para Comprar</h4>';
+                html += naoComprados.map(p => {
+                    const quem = p.quemAdicionou === 'tammy' ? '👩 Tammy' : '👨 VN';
+                    return `
+                    <div class="presente-card" style="border-left: 4px solid ${p.prioridade === 'alta' ? 'var(--danger)' : p.prioridade === 'media' ? 'var(--warning)' : 'var(--success)'};">
+                        <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:8px;">
+                            <strong>${p.nome}</strong>
+                            <span class="badge badge-${p.prioridade === 'alta' ? 'danger' : p.prioridade === 'media' ? 'warning' : 'success'}">${p.prioridade === 'alta' ? '🔥' : p.prioridade === 'media' ? '⭐' : '💤'}</span>
+                        </div>
+                        ${p.valor > 0 ? `<p style="color:var(--primary);font-weight:600;">${formatarMoeda(p.valor)}</p>` : ''}
+                        <p style="font-size:0.8rem;color:var(--gray-500);">Adicionado por ${quem}</p>
+                        ${p.link ? `<a href="${p.link}" target="_blank" style="color:var(--primary);display:block;margin:8px 0;">🔗 Link para compra</a>` : ''}
+                        <div style="display:flex;gap:8px;margin-top:12px;">
+                            <button class="btn btn-success btn-sm" onclick="marcarComprado(${p.id})"><i class="fas fa-check"></i> Comprei</button>
+                            <button class="btn btn-outline btn-sm" onclick="excluirPresente(${p.id})"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>`;
+                }).join('');
+            }
+            
+            if (comprados.length > 0) {
+                html += '<h4 style="grid-column:1/-1;margin:20px 0 8px 0;opacity:0.7;">✅ Já Comprados</h4>';
+                html += comprados.map(p => `
+                    <div class="presente-card comprado">
+                        <strong style="text-decoration:line-through;">${p.nome}</strong>
+                        <p style="font-size:0.8rem;color:var(--gray-500);">Comprado ✅</p>
+                        <button class="btn btn-outline btn-sm" onclick="marcarComprado(${p.id})" style="margin-top:8px;"><i class="fas fa-undo"></i> Desmarcar</button>
                     </div>
-                    ${p.valor > 0 ? `<p style="color:var(--primary);font-weight:600;">${formatarMoeda(p.valor)}</p>` : ''}
-                    ${p.link ? `<a href="${p.link}" target="_blank" style="color:var(--primary);">🔗 Link para compra</a>` : ''}
-                </div>
-            `).join('');
+                `).join('');
+            }
+            
+            container.innerHTML = html;
         }
-
-     
 
         // ============ DATAS ============
         function adicionarDataEspecial() {
@@ -1051,35 +1142,60 @@
             mostrarToast('Data adicionada! 💝');
         }
 
+        function excluirEvento(id) {
+            if (confirm('Excluir este evento?')) {
+                AppState.eventos = AppState.eventos.filter(e => e.id !== id);
+                salvarDados();
+                atualizarEventos();
+                mostrarToast('Evento excluído!');
+            }
+        }
+
         function atualizarEventos() {
             const container = document.getElementById('gridEventos');
             if (AppState.eventos.length === 0) {
-                container.innerHTML = '<p style="text-align:center;grid-column:1/-1;padding:40px;color:var(--gray-500);">Nenhuma data</p>';
+                container.innerHTML = '<p style="text-align:center;grid-column:1/-1;padding:40px;color:var(--gray-500);">Nenhuma data especial</p>';
                 return;
             }
             
             const hoje = new Date();
-            container.innerHTML = AppState.eventos.map(e => {
-                const dias = Math.ceil((new Date(e.data) - hoje) / (1000*60*60*24));
-                let cor = dias > 30 ? 'var(--info)' : dias > 7 ? 'var(--warning)' : dias > 0 ? 'var(--danger)' : 'var(--success)';
-                let status = dias > 0 ? `${dias} dias` : dias === 0 ? '🎉 Hoje!' : '✅ Passou';
-                return `<div class="card" style="border-left:4px solid ${cor};"><strong>${e.nome}</strong><p style="color:var(--gray-500);">📅 ${formatarData(e.data)}</p><p style="color:${cor};font-weight:600;">${status}</p></div>`;
-            }).join('');
+            container.innerHTML = AppState.eventos
+                .sort((a, b) => new Date(a.data) - new Date(b.data))
+                .map(e => {
+                    const dias = Math.ceil((new Date(e.data) - hoje) / (1000*60*60*24));
+                    let cor, status;
+                    if (dias > 30) { cor = 'var(--info)'; status = `${dias} dias`; }
+                    else if (dias > 7) { cor = 'var(--warning)'; status = `${dias} dias`; }
+                    else if (dias > 0) { cor = 'var(--danger)'; status = `${dias} dias!`; }
+                    else if (dias === 0) { cor = 'var(--success)'; status = '🎉 É HOJE!'; }
+                    else { cor = 'var(--gray-500)'; status = '✅ Já passou'; }
+                    
+                    return `
+                    <div class="card" style="border-left:4px solid ${cor};">
+                        <div style="display:flex;justify-content:space-between;align-items:start;">
+                            <strong>${e.nome}</strong>
+                            <button class="btn btn-outline btn-sm" onclick="excluirEvento(${e.id})"><i class="fas fa-trash"></i></button>
+                        </div>
+                        <p style="color:var(--gray-500);">📅 ${formatarData(e.data)}</p>
+                        <p style="color:${cor};font-weight:600;font-size:1.1rem;">${status}</p>
+                    </div>`;
+                }).join('');
         }
 
         // Exportar funções globais
         window.mostrarSecao = mostrarSecao;
         window.alternarTema = alternarTema;
+        window.adicionarSaldo = adicionarSaldo;
         window.adicionarGasto = adicionarGasto;
         window.excluirGasto = excluirGasto;
         window.adicionarMeta = adicionarMeta;
         window.atualizarValorMeta = atualizarValorMeta;
         window.excluirMeta = excluirMeta;
-        window.simularJuros = simularJuros;
         window.adicionarPresente = adicionarPresente;
-        window.adicionarMusica = adicionarMusica;
-        window.adicionarFoto = adicionarFoto;
+        window.marcarComprado = marcarComprado;
+        window.excluirPresente = excluirPresente;
         window.adicionarDataEspecial = adicionarDataEspecial;
+        window.excluirEvento = excluirEvento;
     </script>
 </body>
 </html>
