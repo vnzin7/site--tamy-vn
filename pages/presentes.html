@@ -1,0 +1,71 @@
+<div class="secao-presentes fade-in">
+    <div class="secao-header">
+        <i class="fas fa-gift"></i>
+        <h2>Lista de Presentes</h2>
+    </div>
+    
+    <div class="card">
+        <div class="card-header">
+            <h3>🎁 Adicionar Presente</h3>
+        </div>
+        <form id="formPresente" onsubmit="event.preventDefault(); adicionarPresente();">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Nome do Presente</label>
+                    <input type="text" id="nomePresente" required placeholder="Ex: Liquidificador">
+                </div>
+                <div class="form-group">
+                    <label>Descrição</label>
+                    <input type="text" id="descricaoPresente" placeholder="Detalhes do presente...">
+                </div>
+                <div class="form-group">
+                    <label>Link para Compra</label>
+                    <input type="url" id="linkPresente" placeholder="https://...">
+                </div>
+                <div class="form-group">
+                    <label>Valor Aproximado (R$)</label>
+                    <input type="number" id="valorPresente" step="0.01" placeholder="0,00">
+                </div>
+                <div class="form-group">
+                    <label>Prioridade</label>
+                    <select id="prioridadePresente">
+                        <option value="alta">🔥 Alta Prioridade</option>
+                        <option value="media">⭐ Média Prioridade</option>
+                        <option value="baixa">💤 Baixa Prioridade</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Quem Adicionou</label>
+                    <select id="quemAdicionou">
+                        <option value="Eu">👨 Eu</option>
+                        <option value="Ela">👩 Ela</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-danger" style="margin-top: 20px;">
+                <i class="fas fa-plus"></i> Adicionar à Lista
+            </button>
+        </form>
+    </div>
+    
+    <div class="card">
+        <div class="card-header">
+            <h3>📋 Nossa Lista de Desejos</h3>
+            <span class="badge badge-warning" id="contadorPresentes">0 itens</span>
+        </div>
+        <div class="cards-grid" id="gridPresentes">
+            <p style="text-align: center; grid-column: 1/-1; padding: 40px;">
+                🎁 Nenhum presente na lista ainda. Adicione o primeiro!
+            </p>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-header">
+            <h3>✅ Presentes Já Comprados</h3>
+        </div>
+        <div id="presentesComprados" style="opacity: 0.7;">
+            <p style="text-align: center; padding: 20px;">Nenhum presente comprado ainda.</p>
+        </div>
+    </div>
+</div>

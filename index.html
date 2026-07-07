@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Planejamento - Site do Casal</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="toast-container" id="toastContainer"></div>
+
+    <header class="header">
+        <a class="logo" onclick="mostrarSecao('dashboard')">
+            <i class="fas fa-chart-pie"></i>
+            Nosso Planejamento
+        </a>
+        
+        <button class="menu-mobile-btn" id="btnMenu">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <nav class="nav" id="navDesktop">
+            <a onclick="mostrarSecao('dashboard')" data-secao="dashboard" class="ativo">
+                <i class="fas fa-home"></i> Dashboard
+            </a>
+            <a onclick="mostrarSecao('financas')" data-secao="financas">
+                <i class="fas fa-wallet"></i> Finanças
+            </a>
+            <a onclick="mostrarSecao('metas')" data-secao="metas">
+                <i class="fas fa-bullseye"></i> Metas
+            </a>
+            <a onclick="mostrarSecao('presentes')" data-secao="presentes">
+                <i class="fas fa-gift"></i> Presentes
+            </a>
+            <a onclick="mostrarSecao('musicas')" data-secao="musicas">
+                <i class="fas fa-music"></i> Músicas
+            </a>
+            <a onclick="mostrarSecao('galeria')" data-secao="galeria">
+                <i class="fas fa-images"></i> Galeria
+            </a>
+            <a onclick="mostrarSecao('datas')" data-secao="datas">
+                <i class="fas fa-calendar"></i> Datas
+            </a>
+        </nav>
+        
+        <nav class="nav-mobile" id="navMobile">
+            <a onclick="mostrarSecao('dashboard')" data-secao="dashboard"><i class="fas fa-home"></i> Dashboard</a>
+            <a onclick="mostrarSecao('financas')" data-secao="financas"><i class="fas fa-wallet"></i> Finanças</a>
+            <a onclick="mostrarSecao('metas')" data-secao="metas"><i class="fas fa-bullseye"></i> Metas</a>
+            <a onclick="mostrarSecao('presentes')" data-secao="presentes"><i class="fas fa-gift"></i> Presentes</a>
+            <a onclick="mostrarSecao('musicas')" data-secao="musicas"><i class="fas fa-music"></i> Músicas</a>
+            <a onclick="mostrarSecao('galeria')" data-secao="galeria"><i class="fas fa-images"></i> Galeria</a>
+            <a onclick="mostrarSecao('datas')" data-secao="datas"><i class="fas fa-calendar"></i> Datas</a>
+        </nav>
+        
+        <div class="header-actions">
+            <button class="btn-icon" onclick="alternarTema()" title="Alternar tema">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="btn-icon" onclick="exportarDados()" title="Exportar dados">
+                <i class="fas fa-download"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- DASHBOARD -->
+            <section class="secao ativa" id="secao-dashboard">
+                <div class="welcome-banner">
+                    <div>
+                        <h2>Bem-vindos ao Nosso Planejamento</h2>
+                        <p>Acompanhe finanças, metas e momentos especiais do casal</p>
+                    </div>
+                    <div class="welcome-stats">
+                        <div class="welcome-stat-item">
+                            <span id="dashGastos">R$ 0,00</span>
+                            <small>Gastos do Mês</small>
+                        </div>
+                        <div class="welcome-stat-item">
+                            <span id="dashEconomia">R$ 0,00</span>
+                            <small>Economizado</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid-4">
+                    <div class="stat-card">
+                        <div class="stat-icon bg-primary">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <div class="stat-info">
+                            <small>Gastos do Mês</small>
+                            <strong id="dashGastos2">R$ 0,00</strong>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon bg-success">
+                            <i class="fas fa-piggy-bank"></i>
+                        </div>
+                        <div class="stat-info">
+                            <small>Economizado</small>
+                            <strong id="dashEconomia2">R$ 0,00</strong>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon bg-warning">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <div class="stat-info">
+                            <small>Metas Ativas</small>
+                            <strong id="dashMetas">0</strong>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon bg-info">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <small>Próximo Evento</small>
+                            <strong id="dashEvento">-</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid-2">
+                    <div class="card">
+                        <h3 class="card-title">Últimos Gastos</h3>
+                        <div id="dashUltimosGastos"></div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-title">Metas em Progresso</h3>
+                        <div id="dashMetasProgresso"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FINANÇAS -->
+            <section class="secao" id="secao-financas">
+                <div class="section-header">
+                    <h2><i class="fas fa-wallet"></i> Finanças Compartilhadas</h2>
+                </div>
+                
+                <div class="grid-2">
+                    <div class="card">
+                        <h3 class="card-title">Adicionar Gasto</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Descrição</label>
+                                <input type="text" id="nomeGasto" class="form-input" placeholder="Ex: Supermercado">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Valor (R$)</label>
+                                <input type="number" id="valorGasto" class="form-input" placeholder="0,00" step="0.01">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Categoria</label>
+                                <select id="categoriaGasto" class="form-select">
+                                    <option value="Alimentação">🍕 Alimentação</option>
+                                    <option value="Transporte">🚗 Transporte</option>
+                                    <option value="Moradia">🏠 Moradia</option>
+                                    <option value="Lazer">🎉 Lazer</option>
+                                    <option value="Saúde">💊 Saúde</option>
+                                    <option value="Outros">📦 Outros</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Quem Pagou</label>
+                                <select id="quemPagou" class="form-select">
+                                    <option value="Eu">👨 Eu</option>
+                                    <option value="Ela">👩 Ela</option>
+                                    <option value="Dividido">🤝 Dividido</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Data</label>
+                                <input type="date" id="dataGasto" class="form-input">
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-full" onclick="adicionarGasto()">
+                            <i class="fas fa-plus"></i> Adicionar Gasto
+                        </button>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">Gastos por Categoria</h3>
+                        <div class="chart-container">
+                            <canvas id="graficoPizza"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Histórico de Gastos</h3>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Descrição</th>
+                                    <th>Categoria</th>
+                                    <th>Valor</th>
+                                    <th>Quem Pagou</th>
+                                    <th>Data</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabelaGastos">
+                                <tr>
+                                    <td colspan="6" style="text-align: center; padding: 40px;">Nenhum gasto registrado</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- METAS -->
+            <section class="secao" id="secao-metas">
+                <div class="section-header">
+                    <h2><i class="fas fa-bullseye"></i> Metas Financeiras</h2>
+                </div>
+                
+                <div class="grid-2">
+                    <div class="card">
+                        <h3 class="card-title">Nova Meta</h3>
+                        <div class="form-group">
+                            <label class="form-label">Nome da Meta</label>
+                            <input type="text" id="nomeMeta" class="form-input" placeholder="Ex: Viagem para Europa">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Valor Total (R$)</label>
+                                <input type="number" id="valorMeta" class="form-input" placeholder="10.000,00" step="0.01">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Já Economizado (R$)</label>
+                                <input type="number" id="valorAtualMeta" class="form-input" placeholder="2.500,00" step="0.01">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Data Limite (opcional)</label>
+                            <input type="date" id="dataMeta" class="form-input">
+                        </div>
+                        <button class="btn btn-success btn-full" onclick="adicionarMeta()">
+                            <i class="fas fa-plus"></i> Criar Meta
+                        </button>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">Simulador de Investimentos</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Valor Inicial (R$)</label>
+                                <input type="number" id="simInicial" class="form-input" value="1000">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Aporte Mensal (R$)</label>
+                                <input type="number" id="simMensal" class="form-input" value="500">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Taxa de Juros (% a.a.)</label>
+                                <input type="number" id="simTaxa" class="form-input" value="12">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Período (anos)</label>
+                                <input type="number" id="simTempo" class="form-input" value="10">
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-full" onclick="simularJuros()">
+                            <i class="fas fa-calculator"></i> Calcular Projeção
+                        </button>
+                        <div class="simulacao-resultado">
+                            <small>Valor Futuro Estimado</small>
+                            <strong id="resultadoSimulacao">R$ 0,00</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid-auto" id="gridMetas">
+                    <!-- Metas carregadas dinamicamente -->
+                </div>
+            </section>
+
+            <!-- PRESENTES -->
+            <section class="secao" id="secao-presentes">
+                <div class="section-header">
+                    <h2><i class="fas fa-gift"></i> Lista de Presentes</h2>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Adicionar Presente</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Nome</label>
+                            <input type="text" id="nomePresente" class="form-input" placeholder="Ex: Air Fryer">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Valor (R$)</label>
+                            <input type="number" id="valorPresente" class="form-input" step="0.01">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Prioridade</label>
+                            <select id="prioridadePresente" class="form-select">
+                                <option value="alta">🔥 Alta</option>
+                                <option value="media">⭐ Média</option>
+                                <option value="baixa">💤 Baixa</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Link (opcional)</label>
+                            <input type="url" id="linkPresente" class="form-input" placeholder="https://...">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-full" onclick="adicionarPresente()">
+                        <i class="fas fa-plus"></i> Adicionar Presente
+                    </button>
+                </div>
+                
+                <div class="grid-auto" id="gridPresentes"></div>
+            </section>
+
+            <!-- MÚSICAS -->
+            <section class="secao" id="secao-musicas">
+                <div class="section-header">
+                    <h2><i class="fas fa-music"></i> Nossa Playlist</h2>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Adicionar Música</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Nome da Música</label>
+                            <input type="text" id="nomeMusica" class="form-input" placeholder="Ex: Perfect">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Artista</label>
+                            <input type="text" id="artistaMusica" class="form-input" placeholder="Ex: Ed Sheeran">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Link YouTube</label>
+                            <input type="url" id="linkMusica" class="form-input" placeholder="https://youtube.com/watch?v=...">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-full" onclick="adicionarMusica()">
+                        <i class="fas fa-plus"></i> Adicionar Música
+                    </button>
+                </div>
+                
+                <div class="grid-auto" id="gridMusicas"></div>
+            </section>
+
+            <!-- GALERIA -->
+            <section class="secao" id="secao-galeria">
+                <div class="section-header">
+                    <h2><i class="fas fa-images"></i> Galeria de Momentos</h2>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Upload de Foto</h3>
+                    <div class="form-group">
+                        <label class="form-label">Selecionar Imagem</label>
+                        <input type="file" id="uploadFoto" class="form-input" accept="image/*">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Legenda</label>
+                        <input type="text" id="legendaFoto" class="form-input" placeholder="Descreva o momento...">
+                    </div>
+                    <button class="btn btn-primary btn-full" onclick="adicionarFoto()">
+                        <i class="fas fa-upload"></i> Fazer Upload
+                    </button>
+                </div>
+                
+                <div class="grid-auto" id="gridFotos"></div>
+            </section>
+
+            <!-- DATAS -->
+            <section class="secao" id="secao-datas">
+                <div class="section-header">
+                    <h2><i class="fas fa-calendar"></i> Datas Especiais</h2>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Adicionar Data Especial</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Nome do Evento</label>
+                            <input type="text" id="nomeEvento" class="form-input" placeholder="Ex: Aniversário de Namoro">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Data</label>
+                            <input type="date" id="dataEvento" class="form-input">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-full" onclick="adicionarDataEspecial()">
+                        <i class="fas fa-plus"></i> Adicionar Data
+                    </button>
+                </div>
+                
+                <div class="grid-auto" id="gridEventos"></div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
